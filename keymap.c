@@ -248,3 +248,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+
+// OS detection
+static os_variant_t current_os = OS_UNSURE;
+
+bool process_detected_host_os_user(os_variant_t detected_os) {
+    current_os = detected_os;
+
+    if (detected_os == OS_MACOS) {
+        set_single_default_layer(_MAC_BASE);
+    } else if (detected_os == OS_LINUX) {
+        set_single_default_layer(_LINUX_BASE);
+    }
+    return true;
+}
