@@ -13,6 +13,15 @@ enum custom_keycodes {
   HSV_169_255_255,
 };
 
+enum layers {
+  _MAC_BASE = 0,
+  _MAC_SYMBOLS = 1,
+  _MAC_MISC = 2,
+  _LINUX_BASE = 3,
+  _LINUX_SYMBOLS = 4,
+  _LINUX_MISC = 5,
+};
+
 #define DUAL_FUNC_0 LT(5, KC_V)
 #define DUAL_FUNC_1 LT(11, KC_F19)
 #define DUAL_FUNC_2 LT(3, KC_H)
@@ -25,33 +34,49 @@ enum custom_keycodes {
 #define DUAL_FUNC_9 LT(3, KC_F5)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [0] = LAYOUT_voyager(
+  // Mac Layers
+  [_MAC_BASE] = LAYOUT_voyager(
     NRW_LESS_MAC,   KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           NRW_BSLS_MAC,   
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           NRW_SLSH,       
     KC_BSPC,        MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LSFT, KC_D),MT(MOD_LCTL, KC_F),KC_G,                                           KC_H,           MT(MOD_RCTL, KC_J),MT(MOD_RSFT, KC_K),MT(MOD_RALT, KC_L),DUAL_FUNC_1,    NRW_AT_MAC,     
     KC_ESCAPE,      DUAL_FUNC_0,    KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           NRW_COMM,       NRW_DOT,        NRW_MINS,       KC_HYPR,        
                                                     MT(MOD_LGUI, KC_SPACE),TT(2),                                          OSL(1),         MT(MOD_RGUI, KC_ENTER)
   ),
-  [1] = LAYOUT_voyager(
+  [_MAC_SYMBOLS] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
     KC_GRAVE,       NRW_EXLM,       NRW_AT_MAC,     NRW_LBRC,       NRW_RBRC,       NRW_APOS_MAC,                                   NRW_AE,         NRW_PLUS,       NRW_MINS,       NRW_EQL,        NRW_ARNG,       KC_F12,         
     KC_TRANSPARENT, DUAL_FUNC_2,    DUAL_FUNC_3,    DUAL_FUNC_4,    DUAL_FUNC_5,    NRW_GRV_MAC,                                    NRW_QUES,       MT(MOD_RCTL, NRW_LESS_MAC),DUAL_FUNC_6,    DUAL_FUNC_7,    DUAL_FUNC_8,    KC_TRANSPARENT, 
     KC_TRANSPARENT, NRW_PERC,       NRW_CIRC,       NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_TILD,                                       NRW_AMPR,       NRW_LABK,       NRW_RABK,       NRW_BSLS_MAC,   NRW_OSTR,       KC_TRANSPARENT, 
                                                     TO(0),          KC_TRANSPARENT,                                 TO(2),          KC_TRANSPARENT
   ),
-  [2] = LAYOUT_voyager(
+  [_MAC_MISC] = LAYOUT_voyager(
     RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_SLD,        RGB_VAD,        RGB_VAI,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TO(3),          QK_BOOT,        
     KC_TRANSPARENT, KC_TRANSPARENT, KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_TRANSPARENT,                                 KC_PAGE_UP,     KC_HOME,        KC_UP,          KC_END,         KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, MT(MOD_LCTL, KC_MEDIA_PREV_TRACK),MT(MOD_LALT, KC_MEDIA_NEXT_TRACK),MT(MOD_LSFT, KC_MEDIA_STOP),MT(MOD_LCTL, KC_MEDIA_PLAY_PAUSE),KC_TRANSPARENT,                                 KC_PGDN,        KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_TRANSPARENT, LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     DUAL_FUNC_9,    KC_TRANSPARENT,                                 TO(1),          KC_TRANSPARENT
   ),
-  [3] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_A,           KC_S,           KC_D,           KC_F,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_J,           KC_K,           KC_L,           NRW_SCLN,       KC_TRANSPARENT, 
-    KC_LEFT_SHIFT,  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TO(0),          
-                                                    KC_SPACE,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+  // Linux layers
+  [_LINUX_BASE] = LAYOUT_voyager(
+    NRW_LESS_MAC,   KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           NRW_BSLS_MAC,   
+    KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           NRW_SLSH,       
+    KC_BSPC,        MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LSFT, KC_D),MT(MOD_LCTL, KC_F),KC_G,                                           KC_H,           MT(MOD_RCTL, KC_J),MT(MOD_RSFT, KC_K),MT(MOD_RALT, KC_L),DUAL_FUNC_1,    NRW_AT_MAC,     
+    KC_ESCAPE,      DUAL_FUNC_0,    KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           NRW_COMM,       NRW_DOT,        NRW_MINS,       KC_HYPR,        
+                                                    MT(MOD_LGUI, KC_SPACE),TT(2),                                          OSL(1),         MT(MOD_RGUI, KC_ENTER)
+  ),
+  [_LINUX_SYMBOLS] = LAYOUT_voyager(
+    KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
+    KC_GRAVE,       NRW_EXLM,       NRW_AT_MAC,     NRW_LBRC,       NRW_RBRC,       NRW_APOS_MAC,                                   NRW_AE,         NRW_PLUS,       NRW_MINS,       NRW_EQL,        NRW_ARNG,       KC_F12,         
+    KC_TRANSPARENT, DUAL_FUNC_2,    DUAL_FUNC_3,    DUAL_FUNC_4,    DUAL_FUNC_5,    NRW_GRV_MAC,                                    NRW_QUES,       MT(MOD_RCTL, NRW_LESS_MAC),DUAL_FUNC_6,    DUAL_FUNC_7,    DUAL_FUNC_8,    KC_TRANSPARENT, 
+    KC_TRANSPARENT, NRW_PERC,       NRW_CIRC,       NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_TILD,                                       NRW_AMPR,       NRW_LABK,       NRW_RABK,       NRW_BSLS_MAC,   NRW_OSTR,       KC_TRANSPARENT, 
+                                                    TO(0),          KC_TRANSPARENT,                                 TO(2),          KC_TRANSPARENT
+  ),
+  [_LINUX_MISC] = LAYOUT_voyager(
+    RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_SLD,        RGB_VAD,        RGB_VAI,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TO(3),          QK_BOOT,        
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_TRANSPARENT,                                 KC_PAGE_UP,     KC_HOME,        KC_UP,          KC_END,         KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, MT(MOD_LCTL, KC_MEDIA_PREV_TRACK),MT(MOD_LALT, KC_MEDIA_NEXT_TRACK),MT(MOD_LSFT, KC_MEDIA_STOP),MT(MOD_LCTL, KC_MEDIA_PLAY_PAUSE),KC_TRANSPARENT,                                 KC_PGDN,        KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_TRANSPARENT, LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+                                                    DUAL_FUNC_9,    KC_TRANSPARENT,                                 TO(1),          KC_TRANSPARENT
   ),
 };
 
