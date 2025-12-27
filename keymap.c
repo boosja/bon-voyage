@@ -129,7 +129,7 @@ void set_layer_color(int layer) {
 
 bool rgb_matrix_indicators_user(void) {
   if (rawhid_state.rgb_control) {
-      return false;
+    return false;
   }
   if (!keyboard_config.disable_layer_led) {
     switch (biton32(layer_state)) {
@@ -145,7 +145,13 @@ bool rgb_matrix_indicators_user(void) {
       case 3:
         set_layer_color(3);
         break;
-     default:
+      case 4:
+        set_layer_color(4);
+        break;
+      case 5:
+        set_layer_color(5);
+        break;
+      default:
         if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
           rgb_matrix_set_color_all(0, 0, 0);
         }
