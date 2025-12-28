@@ -1,17 +1,11 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "i18n.h"
+#include "keymap_norwegian.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #ifndef ZSA_SAFE_RANGE
 #define ZSA_SAFE_RANGE SAFE_RANGE
 #endif
-
-enum custom_keycodes {
-  RGB_SLD = ZSA_SAFE_RANGE,
-  HSV_0_255_255,
-  HSV_74_255_255,
-  HSV_169_255_255,
-};
 
 enum layers {
   _MAC_BASE = 0,
@@ -20,6 +14,14 @@ enum layers {
   _LINUX_BASE = 3,
   _LINUX_SYMBOLS = 4,
   _LINUX_MISC = 5,
+};
+
+enum custom_keycodes {
+  RGB_SLD = ZSA_SAFE_RANGE,
+  HSV_0_255_255,
+  HSV_74_255_255,
+  HSV_169_255_255,
+  NO_BTCK_LIVE,
 };
 
 // This is a hack!
@@ -51,6 +53,9 @@ enum layers {
 #define LSUPER_SPACE MT(MOD_LGUI, KC_SPACE)
 #define RSUPER_ENTER MT(MOD_RGUI, KC_ENTER)
 
+#define MY_AA NO_ARNG
+#define MY_OE NO_OSTR
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Mac Layers
   [_MAC_BASE] = LAYOUT_voyager(
@@ -76,18 +81,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   // Linux layers
   [_LINUX_BASE] = LAYOUT_voyager(
-    NRW_LESS_MAC,   KC_1,          KC_2,     KC_3,     KC_4,     KC_5,                KC_6,   KC_7,     KC_8,       KC_9,      KC_0,          NRW_BSLS_MAC,
-    KC_TAB,         KC_Q,          KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,   KC_U,     KC_I,       KC_O,      KC_P,          NRW_SLSH,
-    KC_BSPC,        LCTL_A,        LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    DUAL_FUNC_1,   NRW_AT_MAC,
-    KC_ESCAPE,      DUAL_FUNC_0,   KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     NRW_COMM,   NRW_DOT,   NRW_MINS,      KC_HYPR,
+    NO_QUOT,        KC_1,          KC_2,     KC_3,     KC_4,     KC_5,                KC_6,   KC_7,     KC_8,       KC_9,      KC_0,          NO_BSLS,
+    KC_TAB,         KC_Q,          KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,   KC_U,     KC_I,       KC_O,      KC_P,          NO_SLSH,
+    KC_BSPC,        LCTL_A,        LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    DUAL_FUNC_1,   NO_AT,
+    KC_ESCAPE,      DUAL_FUNC_0,   KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     KC_COMM,    KC_DOT,    NO_MINS,       KC_HYPR,
                                       LSUPER_SPACE,   TT(_LINUX_MISC),                OSL(_LINUX_SYMBOLS),   RSUPER_ENTER
   ),
   [_LINUX_SYMBOLS] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_F1,         KC_F2,         KC_F3,          KC_F4,          KC_F5,                       KC_F6,      KC_F7,                        KC_F8,         KC_F9,          KC_F10,        KC_F11,
-    KC_GRAVE,       NRW_EXLM,      NRW_AT_MAC,    NRW_LBRC,       NRW_RBRC,       NRW_APOS_MAC,                NRW_AE,     NRW_PLUS,                     NRW_MINS,      NRW_EQL,        NRW_ARNG,      KC_F12,
-    KC_TRANSPARENT, DUAL_FUNC_2,   DUAL_FUNC_3,   DUAL_FUNC_4,    DUAL_FUNC_5,    NRW_GRV_MAC,                 NRW_QUES,   MT(MOD_RCTL, NRW_LESS_MAC),   DUAL_FUNC_6,   DUAL_FUNC_7,    DUAL_FUNC_8,   KC_TRANSPARENT,
-    KC_TRANSPARENT, NRW_PERC,      NRW_CIRC,      NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_TILD,                    NRW_AMPR,   NRW_LABK,                     NRW_RABK,      NRW_BSLS_MAC,   NRW_OSTR,      KC_TRANSPARENT,
-                                                         TO(_LINUX_BASE),   KC_TRANSPARENT,                    TO(_LINUX_MISC),   KC_TRANSPARENT
+    KC_TRANSPARENT, KC_F1,         KC_F2,            KC_F3,          KC_F4,          KC_F5,                       KC_F6,      KC_F7,                        KC_F8,         KC_F9,          KC_F10,        KC_F11,
+    KC_TRANSPARENT, NO_EXLM,       KC_TRANSPARENT,   NO_LBRC,        NO_RBRC,        NO_PIPE,                     NO_AE,      NO_PLUS,                      NO_MINS,       NO_EQL,         MY_AA,         KC_F12,
+    KC_TRANSPARENT, DUAL_FUNC_2,   DUAL_FUNC_3,      DUAL_FUNC_4,    DUAL_FUNC_5,    NO_BTCK_LIVE,                NO_QUES,    MT(MOD_RCTL, NO_QUOT),        DUAL_FUNC_6,   DUAL_FUNC_7,    DUAL_FUNC_8,   KC_TRANSPARENT,
+    KC_TRANSPARENT, NO_PERC,       NO_CIRC,          NO_LCBR,        NO_RCBR,        NO_TILD,                     NO_AMPR,    NO_LABK,                      NO_RABK,       NO_BSLS,        MY_OE,         KC_TRANSPARENT,
+                                                           TO(_LINUX_BASE),   KC_TRANSPARENT,                    TO(_LINUX_MISC),   KC_TRANSPARENT
   ),
   [_LINUX_MISC] = LAYOUT_voyager(
     RGB_TOG,        TOGGLE_LAYER_COLOR, RGB_MODE_FORWARD,  RGB_SLD,         RGB_VAD,        RGB_VAI,                        KC_TRANSPARENT, KC_TRANSPARENT,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_BOOT,
@@ -267,6 +272,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         rgblight_mode(1);
         rgblight_sethsv(169,255,255);
+      }
+      return false;
+    case NO_BTCK_LIVE:
+      if (record->event.pressed) {
+        tap_code16(S(KC_EQL));
+        tap_code(KC_SPC);
       }
       return false;
   }
