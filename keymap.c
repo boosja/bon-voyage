@@ -27,10 +27,10 @@ enum custom_keycodes {
 // This is a hack!
 // The layers and keycodes are arbitrary, but needs to be unique combinations,
 // so that the switch-statement in process_record_user keeps working.
-#define DUAL_FUNC_0 LT(5, KC_V)
 #define RGUI_COLN LT(11, KC_F19)
 #define LCTL_HASH LT(3, KC_H)
 #define LALT_DOLLAR LT(2, KC_0)
+#define LALT_DOLLAR_MAC LT(5, KC_V)
 #define LSFT_LPRN LT(1, KC_F9)
 #define LCTL_RPRN LT(14, KC_A)
 #define RSFT_DQUO LT(11, KC_W)
@@ -67,10 +67,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         LSUPER_SPACE,   TT(_MAC_MISC),                OSL(_MAC_SYMBOLS),   RSUPER_ENTER
   ),
   [_MAC_SYMBOLS] = LAYOUT_voyager(
-    _______,    KC_F1,       KC_F2,         KC_F3,          KC_F4,          KC_F5,                       KC_F6,      KC_F7,                        KC_F8,       KC_F9,          KC_F10,      KC_F11,
-    KC_GRAVE,   NRW_EXLM,    NRW_AT_MAC,    NRW_LBRC,       NRW_RBRC,       NRW_APOS_MAC,                NRW_AE,     NRW_PLUS,                     NRW_MINS,    NRW_EQL,        NRW_ARNG,    KC_F12,
-    _______,    LCTL_HASH,   LALT_DOLLAR,   LSFT_LPRN,      LCTL_RPRN,      NRW_GRV_MAC,                 NRW_QUES,   MT(MOD_RCTL, NRW_LESS_MAC),   RSFT_DQUO,   RALT_SLSH,      RGUI_ASTR,   _______,
-    _______,    NRW_PERC,    NRW_CIRC,      NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_TILD,                    NRW_AMPR,   NRW_LABK,                     NRW_RABK,    NRW_BSLS_MAC,   NRW_OSTR,    _______,
+    _______,    KC_F1,       KC_F2,             KC_F3,          KC_F4,          KC_F5,                       KC_F6,      KC_F7,                        KC_F8,       KC_F9,          KC_F10,      KC_F11,
+    KC_GRAVE,   NRW_EXLM,    NRW_AT_MAC,        NRW_LBRC,       NRW_RBRC,       NRW_APOS_MAC,                NRW_AE,     NRW_PLUS,                     NRW_MINS,    NRW_EQL,        NRW_ARNG,    KC_F12,
+    _______,    LCTL_HASH,   LALT_DOLLAR_MAC,   LSFT_LPRN,      LCTL_RPRN,      NRW_GRV_MAC,                 NRW_QUES,   MT(MOD_RCTL, NRW_LESS_MAC),   RSFT_DQUO,   RALT_SLSH,      RGUI_ASTR,   _______,
+    _______,    NRW_PERC,    NRW_CIRC,          NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_TILD,                    NRW_AMPR,   NRW_LABK,                     NRW_RABK,    NRW_BSLS_MAC,   NRW_OSTR,    _______,
                                                            TO(_MAC_BASE),   _______,                     TO(_MAC_MISC),   _______
   ),
   [_MAC_MISC] = LAYOUT_voyager(
@@ -223,25 +223,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       handle_dual_func(record, KC_RIGHT_GUI, NO_COLN);
       return false;
     case LCTL_HASH:
-      handle_dual_func(record, KC_LEFT_CTRL, NRW_HASH);
+      handle_dual_func(record, KC_LEFT_CTRL, NO_HASH);
       return false;
     case LALT_DOLLAR:
+      handle_dual_func(record, KC_LEFT_ALT, NO_DLR);
+      return false;
+    case LALT_DOLLAR_MAC:
       handle_dual_func(record, KC_LEFT_ALT, NRW_DLR_MAC);
       return false;
     case LSFT_LPRN:
-      handle_dual_func(record, KC_LEFT_SHIFT, NRW_LPRN);
+      handle_dual_func(record, KC_LEFT_SHIFT, NO_LPRN);
       return false;
     case LCTL_RPRN:
-      handle_dual_func(record, KC_LEFT_CTRL, NRW_RPRN);
+      handle_dual_func(record, KC_LEFT_CTRL, NO_RPRN);
       return false;
     case RSFT_DQUO:
-      handle_dual_func(record, KC_RIGHT_SHIFT, NRW_DQUO);
+      handle_dual_func(record, KC_RIGHT_SHIFT, NO_DQUO);
       return false;
     case RALT_SLSH:
-      handle_dual_func(record, KC_RIGHT_ALT, NRW_SLSH);
+      handle_dual_func(record, KC_RIGHT_ALT, NO_SLSH);
       return false;
     case RGUI_ASTR:
-      handle_dual_func(record, KC_RIGHT_GUI, NRW_ASTR);
+      handle_dual_func(record, KC_RIGHT_GUI, NO_ASTR);
       return false;
     case LGUI_MAC_BASE:
       handle_dual_layer_func(record, KC_LEFT_GUI, _MAC_BASE);
