@@ -184,7 +184,7 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-void my_tap_hold_register_code16(uint16_t kc_tap, uint16_t kc_held, keyrecord_t *record) {
+void handle_dual_func(keyrecord_t *record, uint16_t kc_held, uint16_t kc_tap) {
   if (record->tap.count > 0) {
     if (record->event.pressed) {
       register_code16(kc_tap);
@@ -200,7 +200,7 @@ void my_tap_hold_register_code16(uint16_t kc_tap, uint16_t kc_held, keyrecord_t 
   }
 }
 
-void my_dual_func_layer_key(uint16_t layer, uint16_t kc_held, keyrecord_t *record) {
+void handle_dual_layer_func(keyrecord_t *record, uint16_t kc_held, uint16_t layer) {
   if (record->tap.count > 0) {
     if (record->event.pressed) {
       layer_move(layer);
@@ -219,34 +219,34 @@ void my_dual_func_layer_key(uint16_t layer, uint16_t kc_held, keyrecord_t *recor
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case DUAL_FUNC_1:
-      my_tap_hold_register_code16(NRW_COLN, KC_RIGHT_GUI, record);
+      handle_dual_func(record, KC_RIGHT_GUI, NRW_COLN);
       return false;
     case DUAL_FUNC_2:
-      my_tap_hold_register_code16(NRW_HASH, KC_LEFT_CTRL, record);
+      handle_dual_func(record, KC_LEFT_CTRL, NRW_HASH);
       return false;
     case DUAL_FUNC_3:
-      my_tap_hold_register_code16(NRW_DLR_MAC, KC_LEFT_ALT, record);
+      handle_dual_func(record, KC_LEFT_ALT, NRW_DLR_MAC);
       return false;
     case DUAL_FUNC_4:
-      my_tap_hold_register_code16(NRW_LPRN, KC_LEFT_SHIFT, record);
+      handle_dual_func(record, KC_LEFT_SHIFT, NRW_LPRN);
       return false;
     case DUAL_FUNC_5:
-      my_tap_hold_register_code16(NRW_RPRN, KC_LEFT_CTRL, record);
+      handle_dual_func(record, KC_LEFT_CTRL, NRW_RPRN);
       return false;
     case DUAL_FUNC_6:
-      my_tap_hold_register_code16(NRW_DQUO, KC_RIGHT_SHIFT, record);
+      handle_dual_func(record, KC_RIGHT_SHIFT, NRW_DQUO);
       return false;
     case DUAL_FUNC_7:
-      my_tap_hold_register_code16(NRW_SLSH, KC_RIGHT_ALT, record);
+      handle_dual_func(record, KC_RIGHT_ALT, NRW_SLSH);
       return false;
     case DUAL_FUNC_8:
-      my_tap_hold_register_code16(NRW_ASTR, KC_RIGHT_GUI, record);
+      handle_dual_func(record, KC_RIGHT_GUI, NRW_ASTR);
       return false;
     case DUAL_FUNC_9:
-      my_dual_func_layer_key(_MAC_BASE, KC_LEFT_GUI, record);
+      handle_dual_layer_func(record, KC_LEFT_GUI, _MAC_BASE);
       return false;
     case DUAL_FUNC_10:
-      my_dual_func_layer_key(_LINUX_BASE, KC_LEFT_GUI, record);
+      handle_dual_layer_func(record, KC_LEFT_GUI, _LINUX_BASE);
       return false;
     case RGB_SLD:
       if (record->event.pressed) {
