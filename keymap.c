@@ -28,17 +28,18 @@ enum custom_keycodes {
 // The layers and keycodes are arbitrary, but needs to be unique combinations,
 // so that the switch-statement in process_record_user keeps working.
 #define DUAL_FUNC_0 LT(5, KC_V)
-#define DUAL_FUNC_1 LT(11, KC_F19)
-#define DUAL_FUNC_2 LT(3, KC_H)
-#define DUAL_FUNC_3 LT(2, KC_0)
-#define DUAL_FUNC_4 LT(1, KC_F9)
-#define DUAL_FUNC_5 LT(14, KC_A)
-#define DUAL_FUNC_6 LT(11, KC_W)
-#define DUAL_FUNC_7 LT(12, KC_G)
-#define DUAL_FUNC_8 LT(12, KC_8)
-#define DUAL_FUNC_9 LT(3, KC_F5)
-#define DUAL_FUNC_10 LT(3, KC_F4)
+#define RGUI_COLN LT(11, KC_F19)
+#define LCTL_HASH LT(3, KC_H)
+#define LALT_DOLLAR LT(2, KC_0)
+#define LSFT_LPRN LT(1, KC_F9)
+#define LCTL_RPRN LT(14, KC_A)
+#define RSFT_DQUO LT(11, KC_W)
+#define RALT_SLSH LT(12, KC_G)
+#define RGUI_ASTR LT(12, KC_8)
+#define LGUI_MAC_BASE LT(3, KC_F5)
+#define LGUI_LINUX_BASE LT(3, KC_F4)
 
+// To shorter names:
 #define LCTL_A MT(MOD_LCTL, KC_A)
 #define LCTL_F MT(MOD_LCTL, KC_F)
 #define LCTL_PREV MT(MOD_LCTL, KC_MEDIA_PREV_TRACK)
@@ -61,45 +62,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MAC_BASE] = LAYOUT_voyager(
     NRW_LESS_MAC,   KC_1,          KC_2,     KC_3,     KC_4,     KC_5,                KC_6,   KC_7,     KC_8,       KC_9,      KC_0,          NRW_BSLS_MAC,
     KC_TAB,         KC_Q,          KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,   KC_U,     KC_I,       KC_O,      KC_P,          NRW_SLSH,
-    KC_BSPC,        LCTL_A,        LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    DUAL_FUNC_1,   NRW_AT_MAC,
+    KC_BSPC,        LCTL_A,        LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    RGUI_COLN,     NRW_AT_MAC,
     KC_ESCAPE,      KC_Z,          KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     NRW_COMM,   NRW_DOT,   NRW_MINS,      KC_HYPR,
                                         LSUPER_SPACE,   TT(_MAC_MISC),                OSL(_MAC_SYMBOLS),   RSUPER_ENTER
   ),
   [_MAC_SYMBOLS] = LAYOUT_voyager(
-    _______,    KC_F1,         KC_F2,         KC_F3,          KC_F4,          KC_F5,                       KC_F6,      KC_F7,                        KC_F8,         KC_F9,          KC_F10,        KC_F11,
-    KC_GRAVE,   NRW_EXLM,      NRW_AT_MAC,    NRW_LBRC,       NRW_RBRC,       NRW_APOS_MAC,                NRW_AE,     NRW_PLUS,                     NRW_MINS,      NRW_EQL,        NRW_ARNG,      KC_F12,
-    _______,    DUAL_FUNC_2,   DUAL_FUNC_3,   DUAL_FUNC_4,    DUAL_FUNC_5,    NRW_GRV_MAC,                 NRW_QUES,   MT(MOD_RCTL, NRW_LESS_MAC),   DUAL_FUNC_6,   DUAL_FUNC_7,    DUAL_FUNC_8,   _______,
-    _______,    NRW_PERC,      NRW_CIRC,      NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_TILD,                    NRW_AMPR,   NRW_LABK,                     NRW_RABK,      NRW_BSLS_MAC,   NRW_OSTR,      _______,
-                                                             TO(_MAC_BASE),   _______,                     TO(_MAC_MISC),   _______
+    _______,    KC_F1,       KC_F2,         KC_F3,          KC_F4,          KC_F5,                       KC_F6,      KC_F7,                        KC_F8,       KC_F9,          KC_F10,      KC_F11,
+    KC_GRAVE,   NRW_EXLM,    NRW_AT_MAC,    NRW_LBRC,       NRW_RBRC,       NRW_APOS_MAC,                NRW_AE,     NRW_PLUS,                     NRW_MINS,    NRW_EQL,        NRW_ARNG,    KC_F12,
+    _______,    LCTL_HASH,   LALT_DOLLAR,   LSFT_LPRN,      LCTL_RPRN,      NRW_GRV_MAC,                 NRW_QUES,   MT(MOD_RCTL, NRW_LESS_MAC),   RSFT_DQUO,   RALT_SLSH,      RGUI_ASTR,   _______,
+    _______,    NRW_PERC,    NRW_CIRC,      NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_TILD,                    NRW_AMPR,   NRW_LABK,                     NRW_RABK,    NRW_BSLS_MAC,   NRW_OSTR,    _______,
+                                                           TO(_MAC_BASE),   _______,                     TO(_MAC_MISC),   _______
   ),
   [_MAC_MISC] = LAYOUT_voyager(
     RGB_TOG,   TOGGLE_LAYER_COLOR, RGB_MODE_FORWARD,  RGB_SLD,         RGB_VAD,        RGB_VAI,                        _______,      _______,              _______,        _______,    _______,   QK_BOOT,
     _______,   _______,            KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_AUDIO_MUTE,  _______,                        KC_PAGE_UP,   KC_HOME,              KC_UP,          KC_END,     _______,   _______,
     _______,   LCTL_PREV,          LALT_NEXT,         LSFT_STOP,       LCTL_PLAY,      _______,                        KC_PGDN,      KC_LEFT,              KC_DOWN,        KC_RIGHT,   _______,   _______,
     _______,   _______,            _______,           HSV_0_255_255,   HSV_74_255_255, HSV_169_255_255,                _______,      LCTL(LSFT(KC_TAB)),   LCTL(KC_TAB),   _______,    _______,   _______,
-                                                                        DUAL_FUNC_9,   _______,                        TO(_MAC_SYMBOLS),   _______
+                                                                      LGUI_MAC_BASE,   _______,                        TO(_MAC_SYMBOLS),   _______
   ),
   // Linux layers
   [_LINUX_BASE] = LAYOUT_voyager(
     KC_LGUI,        KC_1,          KC_2,     KC_3,     KC_4,     KC_5,                KC_6,   KC_7,     KC_8,       KC_9,      KC_0,          NO_BSLS,
     KC_TAB,         KC_Q,          KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,   KC_U,     KC_I,       KC_O,      KC_P,          NO_SLSH,
-    KC_BSPC,        LCTL_A,        LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    DUAL_FUNC_1,   NO_AT,
+    KC_BSPC,        LCTL_A,        LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    RGUI_COLN,     NO_AT,
     KC_ESCAPE,      KC_Z,          KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     KC_COMM,    KC_DOT,    NO_MINS,       KC_HYPR,
                                       LSUPER_SPACE,   TT(_LINUX_MISC),                OSL(_LINUX_SYMBOLS),   RSUPER_ENTER
   ),
   [_LINUX_SYMBOLS] = LAYOUT_voyager(
-    _______, KC_F1,         KC_F2,         KC_F3,          KC_F4,          KC_F5,                       KC_F6,      KC_F7,                   KC_F8,         KC_F9,         KC_F10,        KC_F11,
-    _______, NO_EXLM,       _______,       NO_LBRC,        NO_RBRC,        NO_PIPE,                     NO_AE,      NO_PLUS,                 NO_MINS,       NO_EQL,        MY_AA,         KC_F12,
-    _______, DUAL_FUNC_2,   DUAL_FUNC_3,   DUAL_FUNC_4,    DUAL_FUNC_5,    NO_BTCK_LIVE,                NO_QUES,    MT(MOD_RCTL, NO_QUOT),   DUAL_FUNC_6,   DUAL_FUNC_7,   DUAL_FUNC_8,   _______,
-    _______, NO_PERC,       NO_CIRC,       NO_LCBR,        NO_RCBR,        NO_TILD,                     NO_AMPR,    NO_LABK,                 NO_RABK,       NO_BSLS,       MY_OE,         _______,
-                                                        TO(_LINUX_BASE),   _______,                     TO(_LINUX_MISC),   _______
+    _______, KC_F1,       KC_F2,         KC_F3,       KC_F4,       KC_F5,                       KC_F6,      KC_F7,                   KC_F8,       KC_F9,       KC_F10,      KC_F11,
+    _______, NO_EXLM,     _______,       NO_LBRC,     NO_RBRC,     NO_PIPE,                     NO_AE,      NO_PLUS,                 NO_MINS,     NO_EQL,      MY_AA,       KC_F12,
+    _______, LCTL_HASH,   LALT_DOLLAR,   LSFT_LPRN,   LCTL_RPRN,   NO_BTCK_LIVE,                NO_QUES,    MT(MOD_RCTL, NO_QUOT),   RSFT_DQUO,   RALT_SLSH,   RGUI_ASTR,   _______,
+    _______, NO_PERC,     NO_CIRC,       NO_LCBR,     NO_RCBR,     NO_TILD,                     NO_AMPR,    NO_LABK,                 NO_RABK,     NO_BSLS,     MY_OE,       _______,
+                                                TO(_LINUX_BASE),   _______,                     TO(_LINUX_MISC),   _______
   ),
   [_LINUX_MISC] = LAYOUT_voyager(
     RGB_TOG,   TOGGLE_LAYER_COLOR, RGB_MODE_FORWARD,  RGB_SLD,         RGB_VAD,        RGB_VAI,                        _______,      _______,              _______,        _______,    _______,   QK_BOOT,
     _______,   _______,            KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_AUDIO_MUTE,  _______,                        KC_PAGE_UP,   KC_HOME,              KC_UP,          KC_END,     _______,   _______,
     _______,   LCTL_PREV,          LALT_NEXT,         LSFT_STOP,       LCTL_PLAY,      _______,                        KC_PGDN,      KC_LEFT,              KC_DOWN,        KC_RIGHT,   _______,   _______,
     _______,   _______,            _______,           HSV_0_255_255,   HSV_74_255_255, HSV_169_255_255,                _______,      LCTL(LSFT(KC_TAB)),   LCTL(KC_TAB),   _______,    _______,   _______,
-                                                                       DUAL_FUNC_10,   _______,                        TO(_LINUX_SYMBOLS),   _______
+                                                                    LGUI_LINUX_BASE,   _______,                        TO(_LINUX_SYMBOLS),   _______
   ),
 };
 
@@ -218,34 +219,34 @@ void handle_dual_layer_func(keyrecord_t *record, uint16_t kc_held, uint16_t laye
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case DUAL_FUNC_1:
-      handle_dual_func(record, KC_RIGHT_GUI, NRW_COLN);
+    case RGUI_COLN:
+      handle_dual_func(record, KC_RIGHT_GUI, NO_COLN);
       return false;
-    case DUAL_FUNC_2:
+    case LCTL_HASH:
       handle_dual_func(record, KC_LEFT_CTRL, NRW_HASH);
       return false;
-    case DUAL_FUNC_3:
+    case LALT_DOLLAR:
       handle_dual_func(record, KC_LEFT_ALT, NRW_DLR_MAC);
       return false;
-    case DUAL_FUNC_4:
+    case LSFT_LPRN:
       handle_dual_func(record, KC_LEFT_SHIFT, NRW_LPRN);
       return false;
-    case DUAL_FUNC_5:
+    case LCTL_RPRN:
       handle_dual_func(record, KC_LEFT_CTRL, NRW_RPRN);
       return false;
-    case DUAL_FUNC_6:
+    case RSFT_DQUO:
       handle_dual_func(record, KC_RIGHT_SHIFT, NRW_DQUO);
       return false;
-    case DUAL_FUNC_7:
+    case RALT_SLSH:
       handle_dual_func(record, KC_RIGHT_ALT, NRW_SLSH);
       return false;
-    case DUAL_FUNC_8:
+    case RGUI_ASTR:
       handle_dual_func(record, KC_RIGHT_GUI, NRW_ASTR);
       return false;
-    case DUAL_FUNC_9:
+    case LGUI_MAC_BASE:
       handle_dual_layer_func(record, KC_LEFT_GUI, _MAC_BASE);
       return false;
-    case DUAL_FUNC_10:
+    case LGUI_LINUX_BASE:
       handle_dual_layer_func(record, KC_LEFT_GUI, _LINUX_BASE);
       return false;
     case RGB_SLD:
