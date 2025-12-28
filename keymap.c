@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     NRW_LESS_MAC,   KC_1,          KC_2,     KC_3,     KC_4,     KC_5,                KC_6,   KC_7,     KC_8,       KC_9,      KC_0,          NRW_BSLS_MAC,
     KC_TAB,         KC_Q,          KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,   KC_U,     KC_I,       KC_O,      KC_P,          NRW_SLSH,
     KC_BSPC,        LCTL_A,        LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    DUAL_FUNC_1,   NRW_AT_MAC,
-    KC_ESCAPE,      DUAL_FUNC_0,   KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     NRW_COMM,   NRW_DOT,   NRW_MINS,      KC_HYPR,
+    KC_ESCAPE,      KC_Z,          KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     NRW_COMM,   NRW_DOT,   NRW_MINS,      KC_HYPR,
                                         LSUPER_SPACE,   TT(_MAC_MISC),                OSL(_MAC_SYMBOLS),   RSUPER_ENTER
   ),
   [_MAC_SYMBOLS] = LAYOUT_voyager(
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     NO_QUOT,        KC_1,          KC_2,     KC_3,     KC_4,     KC_5,                KC_6,   KC_7,     KC_8,       KC_9,      KC_0,          NO_BSLS,
     KC_TAB,         KC_Q,          KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,   KC_U,     KC_I,       KC_O,      KC_P,          NO_SLSH,
     KC_BSPC,        LCTL_A,        LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    DUAL_FUNC_1,   NO_AT,
-    KC_ESCAPE,      DUAL_FUNC_0,   KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     KC_COMM,    KC_DOT,    NO_MINS,       KC_HYPR,
+    KC_ESCAPE,      KC_Z,          KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     KC_COMM,    KC_DOT,    NO_MINS,       KC_HYPR,
                                       LSUPER_SPACE,   TT(_LINUX_MISC),                OSL(_LINUX_SYMBOLS),   RSUPER_ENTER
   ),
   [_LINUX_SYMBOLS] = LAYOUT_voyager(
@@ -218,9 +218,6 @@ void my_dual_func_layer_key(uint16_t layer, uint16_t kc_held, keyrecord_t *recor
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case DUAL_FUNC_0:
-      my_tap_hold_register_code16(KC_Z, KC_CAPS, record);
-      return false;
     case DUAL_FUNC_1:
       my_tap_hold_register_code16(NRW_COLN, KC_RIGHT_GUI, record);
       return false;
