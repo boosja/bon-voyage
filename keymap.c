@@ -118,6 +118,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+void register_modless_code16(keyrecord_t *record, uint16_t kc_key) {
+  uint8_t current_mods = get_mods();
+  if (record->event.pressed) {
+    clear_mods();
+    register_code16(kc_key);
+    set_mods(current_mods);
+  } else {
+    clear_mods();
+    unregister_code16(kc_key);
+    set_mods(current_mods);
+  }
+}
+
 void handle_dual_func(keyrecord_t *record, uint16_t kc_held, uint16_t kc_tap) {
   if (record->tap.count > 0) {
     if (record->event.pressed) {
@@ -152,6 +165,39 @@ void handle_dual_layer_func(keyrecord_t *record, uint16_t kc_held, uint16_t laye
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case KC_7:
+      if (current_os == OS_LINUX) {
+        if (get_mods() == MOD_BIT(KC_LALT)) {
+          register_modless_code16(record, NO_PIPE); // Alt + 7 => |
+          return false;
+        } else if (get_mods() == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT))) {
+          register_modless_code16(record, NO_BSLS); // Shift + Alt + 7 => backslash
+          return false;
+        }
+      }
+      return true;
+    case KC_8:
+      if (current_os == OS_LINUX) {
+        if (get_mods() == MOD_BIT(KC_LALT)) {
+          register_modless_code16(record, NO_LBRC); // Alt + 8 => [
+          return false;
+        } else if (get_mods() == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT))) {
+          register_modless_code16(record, NO_LCBR); // Shift + Alt + 8 => {
+          return false;
+        }
+      }
+      return true;
+    case KC_9:
+      if (current_os == OS_LINUX) {
+        if (get_mods() == MOD_BIT(KC_LALT)) {
+          register_modless_code16(record, NO_RBRC); // Alt + 9 => ]
+          return false;
+        } else if (get_mods() == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT))) {
+          register_modless_code16(record, NO_RCBR); // Shift + Alt + 9 => }
+          return false;
+        }
+      }
+      return true;
     case RGUI_COLN:
       handle_dual_func(record, KC_RIGHT_GUI, NO_COLN);
       return false;
