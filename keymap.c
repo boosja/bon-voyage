@@ -37,6 +37,7 @@ enum custom_keycodes {
   NO_BTCK_LIVE,
 };
 
+// Mac specific keycodes
 #define NO_AT_MAC KC_NUHS
 #define NO_BSLS_MAC S(ALGR(KC_7))
 #define NO_BTCK_MAC ALGR(KC_EQL)
@@ -80,11 +81,11 @@ enum custom_keycodes {
 #define RSFT_K MT(MOD_RSFT, KC_K)
 #define LSUPER_SPACE MT(MOD_LGUI, KC_SPACE)
 #define RSUPER_ENTER MT(MOD_RGUI, KC_ENTER)
+#define TOG_LAYER_CLR TOGGLE_LAYER_COLOR
+#define RGB_MODE_FWRD RGB_MODE_FORWARD
 
 #define MY_AA NO_ARNG
 #define MY_OE NO_OSTR
-#define TOG_LAYER_CLR TOGGLE_LAYER_COLOR
-#define RGB_MODE_FWRD RGB_MODE_FORWARD
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Mac Layers
