@@ -118,6 +118,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+const key_override_t delete_key_override = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_BSPC, KC_DEL, ~0, MOD_MASK_CAG);
+
+const key_override_t *key_overrides[] = {
+	&delete_key_override
+};
+
 void register_modless_code16(keyrecord_t *record, uint16_t kc_key) {
   uint8_t current_mods = get_mods();
   if (record->event.pressed) {
