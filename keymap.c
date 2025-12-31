@@ -54,8 +54,8 @@ enum custom_keycodes {
 #define LCTL_HASH LT(3, KC_H)
 #define LCTL_RPRN LT(14, KC_A)
 #define LSFT_LPRN LT(1, KC_F9)
-#define LALT_DOLLAR LT(2, KC_0)
-#define LALT_DOLLAR_MAC LT(5, KC_V)
+#define LALT_DLR LT(2, KC_0)
+#define LALT_DLR_MAC LT(5, KC_V)
 #define LGUI_MAC_BASE LT(3, KC_F5)
 #define LGUI_LNX_BASE LT(3, KC_F4)
 #define RSFT_DQUO LT(11, KC_W)
@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MAC_SYMBS] = LAYOUT_voyager(
     _______,         KC_F1,           KC_F2,           KC_F3,           KC_F4,           KC_F5,                      KC_F6,           KC_F7,           KC_F8,           KC_F9,           KC_F10,          KC_F11,
     KC_GRAVE,        NO_EXLM,         _______,         NO_LBRC,         NO_RBRC,         NO_PIPE_MAC,                NO_AE,           NO_PLUS,         NO_MINS,         NO_EQL,          MY_AA,           KC_F12,
-    _______,         LCTL_HASH,       LALT_DOLLAR_MAC, LSFT_LPRN,       LCTL_RPRN,       NO_BTCK_MAC,                NO_QUES,         RCTL_QUOT_MAC,   RSFT_DQUO,       RALT_SLSH,       RGUI_ASTR,       _______,
+    _______,         LCTL_HASH,       LALT_DLR_MAC,    LSFT_LPRN,       LCTL_RPRN,       NO_BTCK_MAC,                NO_QUES,         RCTL_QUOT_MAC,   RSFT_DQUO,       RALT_SLSH,       RGUI_ASTR,       _______,
     _______,         NO_PERC,         NO_CIRC_MAC,     NO_LCBR_MAC,     NO_RCBR_MAC,     NO_TILD_MAC,                NO_AMPR,         NO_LABK,         NO_RABK,         NO_BSLS_MAC,     MY_OE,           _______,
                                                                         TO(_MAC_BASE),   _______,                    TO(_MAC_MISC),   _______
   ),
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_LNX_SYMBS] = LAYOUT_voyager(
     _______,         KC_F1,           KC_F2,           KC_F3,           KC_F4,           KC_F5,                      KC_F6,           KC_F7,           KC_F8,           KC_F9,           KC_F10,          KC_F11,
     _______,         NO_EXLM,         _______,         NO_LBRC,         NO_RBRC,         NO_PIPE,                    NO_AE,           NO_PLUS,         NO_MINS,         NO_EQL,          MY_AA,           KC_F12,
-    _______,         LCTL_HASH,       LALT_DOLLAR,     LSFT_LPRN,       LCTL_RPRN,       NO_BTCK_LIVE,               NO_QUES,         RCTL_QUOT,       RSFT_DQUO,       RALT_SLSH,       RGUI_ASTR,       _______,
+    _______,         LCTL_HASH,       LALT_DLR,        LSFT_LPRN,       LCTL_RPRN,       NO_BTCK_LIVE,               NO_QUES,         RCTL_QUOT,       RSFT_DQUO,       RALT_SLSH,       RGUI_ASTR,       _______,
     _______,         NO_PERC,         NO_CIRC,         NO_LCBR,         NO_RCBR,         NO_TILD,                    NO_AMPR,         NO_LABK,         NO_RABK,         NO_BSLS,         MY_OE,           _______,
                                                                         TO(_LNX_BASE),   _______,                    TO(_LNX_MISC),   _______
   ),
@@ -224,10 +224,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case LCTL_HASH:
       handle_dual_func(record, KC_LEFT_CTRL, NO_HASH);
       return false;
-    case LALT_DOLLAR:
+    case LALT_DLR:
       handle_dual_func(record, KC_LEFT_ALT, NO_DLR);
       return false;
-    case LALT_DOLLAR_MAC:
+    case LALT_DLR_MAC:
       handle_dual_func(record, KC_LEFT_ALT, NO_DLR_MAC);
       return false;
     case LSFT_LPRN:
