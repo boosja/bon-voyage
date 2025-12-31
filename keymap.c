@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_MAC_MISC] = LAYOUT_voyager(
     RGB_TOG,   TOGGLE_LAYER_COLOR, RGB_MODE_FORWARD,  RGB_SLD,         RGB_VAD,        RGB_VAI,                        _______,      _______,              _______,        _______,    _______,   QK_BOOT,
-    _______,   _______,            KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_AUDIO_MUTE,  _______,                        KC_PAGE_UP,   KC_HOME,              KC_UP,          KC_END,     _______,   _______,
+    _______,   _______,            KC_VOLD,           KC_VOLU,         KC_MUTE,        _______,                        KC_PAGE_UP,   KC_HOME,              KC_UP,          KC_END,     _______,   _______,
     _______,   LCTL_PREV,          LALT_NEXT,         LSFT_STOP,       LCTL_PLAY,      _______,                        KC_PGDN,      KC_LEFT,              KC_DOWN,        KC_RIGHT,   _______,   _______,
     _______,   _______,            _______,           HSV_0_255_255,   HSV_74_255_255, HSV_169_255_255,                _______,      LCTL(LSFT(KC_TAB)),   LCTL(KC_TAB),   _______,    _______,   _______,
                                                                       LGUI_MAC_BASE,   _______,                        TO(_MAC_SYMBOLS),   _______
@@ -123,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_LINUX_MISC] = LAYOUT_voyager(
     RGB_TOG,   TOGGLE_LAYER_COLOR, RGB_MODE_FORWARD,  RGB_SLD,         RGB_VAD,        RGB_VAI,                        _______,      _______,              _______,        _______,    _______,   QK_BOOT,
-    _______,   _______,            KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_AUDIO_MUTE,  _______,                        KC_PAGE_UP,   KC_HOME,              KC_UP,          KC_END,     _______,   _______,
+    _______,   _______,            KC_VOLD,           KC_VOLU,         KC_MUTE,        _______,                        KC_PAGE_UP,   KC_HOME,              KC_UP,          KC_END,     _______,   _______,
     _______,   LCTL_PREV,          LALT_NEXT,         LSFT_STOP,       LCTL_PLAY,      _______,                        KC_PGDN,      KC_LEFT,              KC_DOWN,        KC_RIGHT,   _______,   _______,
     _______,   _______,            _______,           HSV_0_255_255,   HSV_74_255_255, HSV_169_255_255,                _______,      LCTL(LSFT(KC_TAB)),   LCTL(KC_TAB),   _______,    _______,   _______,
                                                                     LGUI_LINUX_BASE,   _______,                        TO(_LINUX_SYMBOLS),   _______
