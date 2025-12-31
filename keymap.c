@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-#include "i18n.h"
 #include "keymap_norwegian.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #ifndef ZSA_SAFE_RANGE
@@ -38,6 +37,17 @@ enum custom_keycodes {
   NO_BTCK_LIVE,
 };
 
+#define NO_QUOT_MAC KC_GRV
+#define NO_BSLS_MAC S(ALGR(KC_7))
+#define NO_AT_MAC KC_NUHS
+#define NO_PIPE_MAC KC_NUBS
+#define NO_DLR_MAC S(KC_4)
+#define NO_BTCK_MAC ALGR(KC_EQL)
+#define NO_CIRC_MAC S(KC_RBRC)
+#define NO_LCBR_MAC S(ALGR(KC_8))
+#define NO_RCBR_MAC S(ALGR(KC_9))
+#define NO_TILD_MAC ALGR(KC_RBRC)
+
 // This is a hack!
 // The layers and keycodes are arbitrary, but needs to be unique combinations,
 // so that the switch-statement in process_record_user keeps working.
@@ -59,6 +69,8 @@ enum custom_keycodes {
 #define LCTL_PREV MT(MOD_LCTL, KC_MEDIA_PREV_TRACK)
 #define LCTL_PLAY MT(MOD_LCTL, KC_MEDIA_PLAY_PAUSE)
 #define RCTL_J MT(MOD_RCTL, KC_J)
+#define RCTL_QUOT MT(MOD_RCTL, NO_QUOT)
+#define RCTL_QUOT_MAC MT(MOD_RCTL, NO_QUOT_MAC)
 #define LALT_S MT(MOD_LALT, KC_S)
 #define LALT_NEXT MT(MOD_LALT, KC_MEDIA_NEXT_TRACK)
 #define RALT_L MT(MOD_RALT, KC_L)
@@ -74,18 +86,18 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Mac Layers
   [_MAC_BASE] = LAYOUT_voyager(
-    NRW_LESS_MAC,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                KC_6,   KC_7,     KC_8,       KC_9,      KC_0,          NRW_BSLS_MAC,
-    KC_TAB,         KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,   KC_U,     KC_I,       KC_O,      KC_P,          NRW_SLSH,
-    KC_BSPC,        LCTL_A,   LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    RGUI_COLN,     NRW_AT_MAC,
-    KC_ESCAPE,      KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     NRW_COMM,   NRW_DOT,   NRW_MINS,      KC_HYPR,
-                                        LSUPER_SPACE,   TT(_MAC_MISC),                OSL(_MAC_SYMBOLS),   RSUPER_ENTER
+    NO_QUOT_MAC,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                KC_6,   KC_7,     KC_8,       KC_9,      KC_0,          NO_BSLS_MAC,
+    KC_TAB,         KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,   KC_U,     KC_I,       KC_O,      KC_P,          NO_SLSH,
+    KC_BSPC,        LCTL_A,   LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    RGUI_COLN,     NO_AT_MAC,
+    KC_ESCAPE,      KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     NO_COMM,    NO_DOT,    NO_MINS,       KC_HYPR,
+                                   LSUPER_SPACE,   TT(_MAC_MISC),                OSL(_MAC_SYMBOLS),   RSUPER_ENTER
   ),
   [_MAC_SYMBOLS] = LAYOUT_voyager(
-    _______,    KC_F1,       KC_F2,             KC_F3,          KC_F4,          KC_F5,                       KC_F6,      KC_F7,                        KC_F8,       KC_F9,          KC_F10,      KC_F11,
-    KC_GRAVE,   NRW_EXLM,    NRW_AT_MAC,        NRW_LBRC,       NRW_RBRC,       NRW_APOS_MAC,                NRW_AE,     NRW_PLUS,                     NRW_MINS,    NRW_EQL,        NRW_ARNG,    KC_F12,
-    _______,    LCTL_HASH,   LALT_DOLLAR_MAC,   LSFT_LPRN,      LCTL_RPRN,      NRW_GRV_MAC,                 NRW_QUES,   MT(MOD_RCTL, NRW_LESS_MAC),   RSFT_DQUO,   RALT_SLSH,      RGUI_ASTR,   _______,
-    _______,    NRW_PERC,    NRW_CIRC,          NRW_LCBR_MAC,   NRW_RCBR_MAC,   NRW_TILD,                    NRW_AMPR,   NRW_LABK,                     NRW_RABK,    NRW_BSLS_MAC,   NRW_OSTR,    _______,
-                                                               TO(_MAC_BASE),   _______,                     TO(_MAC_MISC),   _______
+    _______,    KC_F1,       KC_F2,             KC_F3,         KC_F4,         KC_F5,                      KC_F6,     KC_F7,           KC_F8,       KC_F9,         KC_F10,      KC_F11,
+    KC_GRAVE,   NO_EXLM,     _______,           NO_LBRC,       NO_RBRC,       NO_PIPE_MAC,                NO_AE,     NO_PLUS,         NO_MINS,     NO_EQL,        MY_AA,       KC_F12,
+    _______,    LCTL_HASH,   LALT_DOLLAR_MAC,   LSFT_LPRN,     LCTL_RPRN,     NO_BTCK_MAC,                NO_QUES,   RCTL_QUOT_MAC,   RSFT_DQUO,   RALT_SLSH,     RGUI_ASTR,   _______,
+    _______,    NO_PERC,     NO_CIRC_MAC,       NO_LCBR_MAC,   NO_RCBR_MAC,   NO_TILD_MAC,                NO_AMPR,   NO_LABK,         NO_RABK,     NO_BSLS_MAC,   MY_OE,       _______,
+                                                             TO(_MAC_BASE),   _______,                    TO(_MAC_MISC),   _______
   ),
   [_MAC_MISC] = LAYOUT_voyager(
     RGB_TOG,   TOGGLE_LAYER_COLOR, RGB_MODE_FORWARD,  RGB_SLD,         RGB_VAD,        RGB_VAI,                        _______,      _______,              _______,        _______,    _______,   QK_BOOT,
@@ -103,10 +115,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               LSUPER_SPACE,   TT(_LINUX_MISC),                OSL(_LINUX_SYMBOLS),   RSUPER_ENTER
   ),
   [_LINUX_SYMBOLS] = LAYOUT_voyager(
-    _______, KC_F1,       KC_F2,         KC_F3,       KC_F4,       KC_F5,                       KC_F6,     KC_F7,                   KC_F8,       KC_F9,       KC_F10,      KC_F11,
-    _______, NO_EXLM,     _______,       NO_LBRC,     NO_RBRC,     NO_PIPE,                     NO_AE,     NO_PLUS,                 NO_MINS,     NO_EQL,      MY_AA,       KC_F12,
-    _______, LCTL_HASH,   LALT_DOLLAR,   LSFT_LPRN,   LCTL_RPRN,   NO_BTCK_LIVE,                NO_QUES,   MT(MOD_RCTL, NO_QUOT),   RSFT_DQUO,   RALT_SLSH,   RGUI_ASTR,   _______,
-    _______, NO_PERC,     NO_CIRC,       NO_LCBR,     NO_RCBR,     NO_TILD,                     NO_AMPR,   NO_LABK,                 NO_RABK,     NO_BSLS,     MY_OE,       _______,
+    _______, KC_F1,       KC_F2,         KC_F3,       KC_F4,       KC_F5,                       KC_F6,     KC_F7,       KC_F8,       KC_F9,       KC_F10,      KC_F11,
+    _______, NO_EXLM,     _______,       NO_LBRC,     NO_RBRC,     NO_PIPE,                     NO_AE,     NO_PLUS,     NO_MINS,     NO_EQL,      MY_AA,       KC_F12,
+    _______, LCTL_HASH,   LALT_DOLLAR,   LSFT_LPRN,   LCTL_RPRN,   NO_BTCK_LIVE,                NO_QUES,   RCTL_QUOT,   RSFT_DQUO,   RALT_SLSH,   RGUI_ASTR,   _______,
+    _______, NO_PERC,     NO_CIRC,       NO_LCBR,     NO_RCBR,     NO_TILD,                     NO_AMPR,   NO_LABK,     NO_RABK,     NO_BSLS,     MY_OE,       _______,
                                                 TO(_LINUX_BASE),   _______,                     TO(_LINUX_MISC),   _______
   ),
   [_LINUX_MISC] = LAYOUT_voyager(
@@ -214,7 +226,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       handle_dual_func(record, KC_LEFT_ALT, NO_DLR);
       return false;
     case LALT_DOLLAR_MAC:
-      handle_dual_func(record, KC_LEFT_ALT, NRW_DLR_MAC);
+      handle_dual_func(record, KC_LEFT_ALT, NO_DLR_MAC);
       return false;
     case LSFT_LPRN:
       handle_dual_func(record, KC_LEFT_SHIFT, NO_LPRN);
