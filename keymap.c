@@ -50,7 +50,8 @@ enum custom_keycodes {
 
 // This is a hack!
 // The layers and keycodes are arbitrary, but needs to be unique combinations,
-// so that the switch-statement in process_record_user keeps working.
+// so that the switch-statement in process_record_user keeps working,
+// AND that the tap-hold-functionality works.
 #define LCTL_HASH LT(3, KC_H)
 #define LCTL_RPRN LT(14, KC_A)
 #define LSFT_LPRN LT(1, KC_F9)
