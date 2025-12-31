@@ -8,11 +8,11 @@
 
 enum layers {
   _MAC_BASE = 0,
-  _MAC_SYMBOLS = 1,
+  _MAC_SYMBS = 1,
   _MAC_MISC = 2,
-  _LINUX_BASE = 3,
-  _LINUX_SYMBOLS = 4,
-  _LINUX_MISC = 5,
+  _LNX_BASE = 3,
+  _LNX_SYMBS = 4,
+  _LNX_MISC = 5,
 };
 
 // OS detection
@@ -24,7 +24,7 @@ bool process_detected_host_os_user(os_variant_t detected_os) {
     if (detected_os == OS_MACOS) {
       set_single_persistent_default_layer(_MAC_BASE);
     } else if (detected_os == OS_LINUX) {
-      set_single_persistent_default_layer(_LINUX_BASE);
+      set_single_persistent_default_layer(_LNX_BASE);
     }
     return true;
 }
@@ -57,7 +57,7 @@ enum custom_keycodes {
 #define LALT_DOLLAR LT(2, KC_0)
 #define LALT_DOLLAR_MAC LT(5, KC_V)
 #define LGUI_MAC_BASE LT(3, KC_F5)
-#define LGUI_LINUX_BASE LT(3, KC_F4)
+#define LGUI_LNX_BASE LT(3, KC_F4)
 #define RSFT_DQUO LT(11, KC_W)
 #define RALT_SLSH LT(12, KC_G)
 #define RGUI_ASTR LT(12, KC_8)
@@ -82,51 +82,53 @@ enum custom_keycodes {
 
 #define MY_AA NO_ARNG
 #define MY_OE NO_OSTR
+#define TOG_LAYER_CLR TOGGLE_LAYER_COLOR
+#define RGB_MODE_FWRD RGB_MODE_FORWARD
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Mac Layers
   [_MAC_BASE] = LAYOUT_voyager(
-    NO_QUOT_MAC,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                KC_6,   KC_7,     KC_8,       KC_9,      KC_0,          NO_BSLS_MAC,
-    KC_TAB,         KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,   KC_U,     KC_I,       KC_O,      KC_P,          NO_SLSH,
-    KC_BSPC,        LCTL_A,   LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,     RALT_L,    RGUI_COLN,     NO_AT_MAC,
-    KC_ESCAPE,      KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     NO_COMM,    NO_DOT,    NO_MINS,       KC_HYPR,
-                                   LSUPER_SPACE,   TT(_MAC_MISC),                OSL(_MAC_SYMBOLS),   RSUPER_ENTER
+    NO_QUOT_MAC,     KC_1,            KC_2,            KC_3,            KC_4,            KC_5,                       KC_6,            KC_7,            KC_8,            KC_9,            KC_0,            NO_BSLS_MAC,
+    KC_TAB,          KC_Q,            KC_W,            KC_E,            KC_R,            KC_T,                       KC_Y,            KC_U,            KC_I,            KC_O,            KC_P,            NO_SLSH,
+    KC_BSPC,         LCTL_A,          LALT_S,          LSFT_D,          LCTL_F,          KC_G,                       KC_H,            RCTL_J,          RSFT_K,          RALT_L,          RGUI_COLN,       NO_AT_MAC,
+    KC_ESCAPE,       KC_Z,            KC_X,            KC_C,            KC_V,            KC_B,                       KC_N,            KC_M,            NO_COMM,         NO_DOT,          NO_MINS,         KC_HYPR,
+                                                                        LSUPER_SPACE,    TT(_MAC_MISC),              OSL(_MAC_SYMBS), RSUPER_ENTER
   ),
-  [_MAC_SYMBOLS] = LAYOUT_voyager(
-    _______,    KC_F1,       KC_F2,             KC_F3,         KC_F4,         KC_F5,                      KC_F6,     KC_F7,           KC_F8,       KC_F9,         KC_F10,      KC_F11,
-    KC_GRAVE,   NO_EXLM,     _______,           NO_LBRC,       NO_RBRC,       NO_PIPE_MAC,                NO_AE,     NO_PLUS,         NO_MINS,     NO_EQL,        MY_AA,       KC_F12,
-    _______,    LCTL_HASH,   LALT_DOLLAR_MAC,   LSFT_LPRN,     LCTL_RPRN,     NO_BTCK_MAC,                NO_QUES,   RCTL_QUOT_MAC,   RSFT_DQUO,   RALT_SLSH,     RGUI_ASTR,   _______,
-    _______,    NO_PERC,     NO_CIRC_MAC,       NO_LCBR_MAC,   NO_RCBR_MAC,   NO_TILD_MAC,                NO_AMPR,   NO_LABK,         NO_RABK,     NO_BSLS_MAC,   MY_OE,       _______,
-                                                             TO(_MAC_BASE),   _______,                    TO(_MAC_MISC),   _______
+  [_MAC_SYMBS] = LAYOUT_voyager(
+    _______,         KC_F1,           KC_F2,           KC_F3,           KC_F4,           KC_F5,                      KC_F6,           KC_F7,           KC_F8,           KC_F9,           KC_F10,          KC_F11,
+    KC_GRAVE,        NO_EXLM,         _______,         NO_LBRC,         NO_RBRC,         NO_PIPE_MAC,                NO_AE,           NO_PLUS,         NO_MINS,         NO_EQL,          MY_AA,           KC_F12,
+    _______,         LCTL_HASH,       LALT_DOLLAR_MAC, LSFT_LPRN,       LCTL_RPRN,       NO_BTCK_MAC,                NO_QUES,         RCTL_QUOT_MAC,   RSFT_DQUO,       RALT_SLSH,       RGUI_ASTR,       _______,
+    _______,         NO_PERC,         NO_CIRC_MAC,     NO_LCBR_MAC,     NO_RCBR_MAC,     NO_TILD_MAC,                NO_AMPR,         NO_LABK,         NO_RABK,         NO_BSLS_MAC,     MY_OE,           _______,
+                                                                        TO(_MAC_BASE),   _______,                    TO(_MAC_MISC),   _______
   ),
   [_MAC_MISC] = LAYOUT_voyager(
-    RGB_TOG,   TOGGLE_LAYER_COLOR, RGB_MODE_FORWARD,  RGB_SLD,         RGB_VAD,        RGB_VAI,                        _______,      _______,              _______,        _______,    _______,   QK_BOOT,
-    _______,   _______,            KC_VOLD,           KC_VOLU,         KC_MUTE,        _______,                        KC_PAGE_UP,   KC_HOME,              KC_UP,          KC_END,     _______,   _______,
-    _______,   LCTL_PREV,          LALT_NEXT,         LSFT_STOP,       LCTL_PLAY,      _______,                        KC_PGDN,      KC_LEFT,              KC_DOWN,        KC_RIGHT,   _______,   _______,
-    _______,   _______,            _______,           HSV_0_255_255,   HSV_74_255_255, HSV_169_255_255,                _______,      LCTL(LSFT(KC_TAB)),   LCTL(KC_TAB),   _______,    _______,   _______,
-                                                                      LGUI_MAC_BASE,   _______,                        TO(_MAC_SYMBOLS),   _______
+    RGB_TOG,         TOG_LAYER_CLR,   RGB_MODE_FWRD,   RGB_SLD,         RGB_VAD,         RGB_VAI,                    _______,         _______,         _______,         _______,         _______,         QK_BOOT,
+    _______,         _______,         KC_VOLD,         KC_VOLU,         KC_MUTE,         _______,                    KC_PAGE_UP,      KC_HOME,         KC_UP,           KC_END,          _______,         _______,
+    _______,         LCTL_PREV,       LALT_NEXT,       LSFT_STOP,       LCTL_PLAY,       _______,                    KC_PGDN,         KC_LEFT,         KC_DOWN,         KC_RIGHT,        _______,         _______,
+    _______,         _______,         _______,         HSV_0_255_255,   HSV_74_255_255,  HSV_169_255_255,            _______,         _______,         _______,         _______,         _______,         _______,
+                                                                        LGUI_MAC_BASE,   _______,                    TO(_MAC_SYMBS),  _______
   ),
   // Linux layers
-  [_LINUX_BASE] = LAYOUT_voyager(
-    KC_LGUI,     KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                KC_6,   KC_7,     KC_8,      KC_9,     KC_0,        NO_BSLS,
-    KC_TAB,      KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,   KC_U,     KC_I,      KC_O,     KC_P,        NO_SLSH,
-    KC_BSPC,     LCTL_A,   LALT_S,   LSFT_D,   LCTL_F,   KC_G,                KC_H,   RCTL_J,   RSFT_K,    RALT_L,   RGUI_COLN,   NO_AT,
-    KC_ESCAPE,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                KC_N,   KC_M,     KC_COMM,   KC_DOT,   NO_MINS,     KC_HYPR,
-                              LSUPER_SPACE,   TT(_LINUX_MISC),                OSL(_LINUX_SYMBOLS),   RSUPER_ENTER
+  [_LNX_BASE] = LAYOUT_voyager(
+    KC_LGUI,         KC_1,            KC_2,            KC_3,            KC_4,            KC_5,                       KC_6,            KC_7,            KC_8,            KC_9,            KC_0,            NO_BSLS,
+    KC_TAB,          KC_Q,            KC_W,            KC_E,            KC_R,            KC_T,                       KC_Y,            KC_U,            KC_I,            KC_O,            KC_P,            NO_SLSH,
+    KC_BSPC,         LCTL_A,          LALT_S,          LSFT_D,          LCTL_F,          KC_G,                       KC_H,            RCTL_J,          RSFT_K,          RALT_L,          RGUI_COLN,       NO_AT,
+    KC_ESCAPE,       KC_Z,            KC_X,            KC_C,            KC_V,            KC_B,                       KC_N,            KC_M,            KC_COMM,         KC_DOT,          NO_MINS,         KC_HYPR,
+                                                                        LSUPER_SPACE,    TT(_LNX_MISC),              OSL(_LNX_SYMBS), RSUPER_ENTER
   ),
-  [_LINUX_SYMBOLS] = LAYOUT_voyager(
-    _______, KC_F1,       KC_F2,         KC_F3,       KC_F4,       KC_F5,                       KC_F6,     KC_F7,       KC_F8,       KC_F9,       KC_F10,      KC_F11,
-    _______, NO_EXLM,     _______,       NO_LBRC,     NO_RBRC,     NO_PIPE,                     NO_AE,     NO_PLUS,     NO_MINS,     NO_EQL,      MY_AA,       KC_F12,
-    _______, LCTL_HASH,   LALT_DOLLAR,   LSFT_LPRN,   LCTL_RPRN,   NO_BTCK_LIVE,                NO_QUES,   RCTL_QUOT,   RSFT_DQUO,   RALT_SLSH,   RGUI_ASTR,   _______,
-    _______, NO_PERC,     NO_CIRC,       NO_LCBR,     NO_RCBR,     NO_TILD,                     NO_AMPR,   NO_LABK,     NO_RABK,     NO_BSLS,     MY_OE,       _______,
-                                                TO(_LINUX_BASE),   _______,                     TO(_LINUX_MISC),   _______
+  [_LNX_SYMBS] = LAYOUT_voyager(
+    _______,         KC_F1,           KC_F2,           KC_F3,           KC_F4,           KC_F5,                      KC_F6,           KC_F7,           KC_F8,           KC_F9,           KC_F10,          KC_F11,
+    _______,         NO_EXLM,         _______,         NO_LBRC,         NO_RBRC,         NO_PIPE,                    NO_AE,           NO_PLUS,         NO_MINS,         NO_EQL,          MY_AA,           KC_F12,
+    _______,         LCTL_HASH,       LALT_DOLLAR,     LSFT_LPRN,       LCTL_RPRN,       NO_BTCK_LIVE,               NO_QUES,         RCTL_QUOT,       RSFT_DQUO,       RALT_SLSH,       RGUI_ASTR,       _______,
+    _______,         NO_PERC,         NO_CIRC,         NO_LCBR,         NO_RCBR,         NO_TILD,                    NO_AMPR,         NO_LABK,         NO_RABK,         NO_BSLS,         MY_OE,           _______,
+                                                                        TO(_LNX_BASE),   _______,                    TO(_LNX_MISC),   _______
   ),
-  [_LINUX_MISC] = LAYOUT_voyager(
-    RGB_TOG,   TOGGLE_LAYER_COLOR, RGB_MODE_FORWARD,  RGB_SLD,         RGB_VAD,        RGB_VAI,                        _______,      _______,              _______,        _______,    _______,   QK_BOOT,
-    _______,   _______,            KC_VOLD,           KC_VOLU,         KC_MUTE,        _______,                        KC_PAGE_UP,   KC_HOME,              KC_UP,          KC_END,     _______,   _______,
-    _______,   LCTL_PREV,          LALT_NEXT,         LSFT_STOP,       LCTL_PLAY,      _______,                        KC_PGDN,      KC_LEFT,              KC_DOWN,        KC_RIGHT,   _______,   _______,
-    _______,   _______,            _______,           HSV_0_255_255,   HSV_74_255_255, HSV_169_255_255,                _______,      LCTL(LSFT(KC_TAB)),   LCTL(KC_TAB),   _______,    _______,   _______,
-                                                                    LGUI_LINUX_BASE,   _______,                        TO(_LINUX_SYMBOLS),   _______
+  [_LNX_MISC] = LAYOUT_voyager(
+    RGB_TOG,         TOG_LAYER_CLR,   RGB_MODE_FWRD,   RGB_SLD,         RGB_VAD,         RGB_VAI,                    _______,         _______,         _______,         _______,         _______,         QK_BOOT,
+    _______,         _______,         KC_VOLD,         KC_VOLU,         KC_MUTE,         _______,                    KC_PAGE_UP,      KC_HOME,         KC_UP,           KC_END,          _______,         _______,
+    _______,         LCTL_PREV,       LALT_NEXT,       LSFT_STOP,       LCTL_PLAY,       _______,                    KC_PGDN,         KC_LEFT,         KC_DOWN,         KC_RIGHT,        _______,         _______,
+    _______,         _______,         _______,         HSV_0_255_255,   HSV_74_255_255,  HSV_169_255_255,            _______,         _______,         _______,         _______,         _______,         _______,
+                                                                        LGUI_LNX_BASE,   _______,                    TO(_LNX_SYMBS),  _______
   ),
 };
 
@@ -246,8 +248,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case LGUI_MAC_BASE:
       handle_dual_layer_func(record, KC_LEFT_GUI, _MAC_BASE);
       return false;
-    case LGUI_LINUX_BASE:
-      handle_dual_layer_func(record, KC_LEFT_GUI, _LINUX_BASE);
+    case LGUI_LNX_BASE:
+      handle_dual_layer_func(record, KC_LEFT_GUI, _LNX_BASE);
       return false;
     case RGB_SLD:
       if (record->event.pressed) {
