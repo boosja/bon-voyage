@@ -37,31 +37,31 @@ enum custom_keycodes {
   NO_BTCK_LIVE,
 };
 
-#define NO_QUOT_MAC KC_GRV
-#define NO_BSLS_MAC S(ALGR(KC_7))
 #define NO_AT_MAC KC_NUHS
-#define NO_PIPE_MAC KC_NUBS
-#define NO_DLR_MAC S(KC_4)
+#define NO_BSLS_MAC S(ALGR(KC_7))
 #define NO_BTCK_MAC ALGR(KC_EQL)
 #define NO_CIRC_MAC S(KC_RBRC)
+#define NO_DLR_MAC S(KC_4)
 #define NO_LCBR_MAC S(ALGR(KC_8))
+#define NO_PIPE_MAC KC_NUBS
+#define NO_QUOT_MAC KC_GRV
 #define NO_RCBR_MAC S(ALGR(KC_9))
 #define NO_TILD_MAC ALGR(KC_RBRC)
 
 // This is a hack!
 // The layers and keycodes are arbitrary, but needs to be unique combinations,
 // so that the switch-statement in process_record_user keeps working.
-#define RGUI_COLN LT(11, KC_F19)
 #define LCTL_HASH LT(3, KC_H)
+#define LCTL_RPRN LT(14, KC_A)
+#define LSFT_LPRN LT(1, KC_F9)
 #define LALT_DOLLAR LT(2, KC_0)
 #define LALT_DOLLAR_MAC LT(5, KC_V)
-#define LSFT_LPRN LT(1, KC_F9)
-#define LCTL_RPRN LT(14, KC_A)
+#define LGUI_MAC_BASE LT(3, KC_F5)
+#define LGUI_LINUX_BASE LT(3, KC_F4)
 #define RSFT_DQUO LT(11, KC_W)
 #define RALT_SLSH LT(12, KC_G)
 #define RGUI_ASTR LT(12, KC_8)
-#define LGUI_MAC_BASE LT(3, KC_F5)
-#define LGUI_LINUX_BASE LT(3, KC_F4)
+#define RGUI_COLN LT(11, KC_F19)
 
 // To shorter names:
 #define LCTL_A MT(MOD_LCTL, KC_A)
