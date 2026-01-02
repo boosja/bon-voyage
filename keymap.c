@@ -68,16 +68,15 @@ enum custom_keycodes {
 // To shorter names:
 #define LCTL_A          MT(MOD_LCTL, KC_A)
 #define LCTL_F          MT(MOD_LCTL, KC_F)
-#define LCTL_PREV       MT(MOD_LCTL, KC_MEDIA_PREV_TRACK)
 #define LCTL_PLAY       MT(MOD_LCTL, KC_MEDIA_PLAY_PAUSE)
 #define RCTL_J          MT(MOD_RCTL, KC_J)
 #define RCTL_QUOT       MT(MOD_RCTL, NO_QUOT)
 #define RCTL_QUOT_MAC   MT(MOD_RCTL, NO_QUOT_MAC)
 #define LSFT_D          MT(MOD_LSFT, KC_D)
-#define LSFT_STOP       MT(MOD_LSFT, KC_MEDIA_STOP)
+#define LSFT_PREV       MT(MOD_LSFT, KC_MEDIA_PREV_TRACK)
 #define RSFT_K          MT(MOD_RSFT, KC_K)
 #define LALT_S          MT(MOD_LALT, KC_S)
-#define LALT_NEXT       MT(MOD_LALT, KC_MEDIA_NEXT_TRACK)
+#define LALT_STOP       MT(MOD_LALT, KC_MEDIA_STOP)
 #define RALT_L          MT(MOD_RALT, KC_L)
 #define LSUPER_SPACE    MT(MOD_LGUI, KC_SPACE)
 #define RSUPER_ENTER    MT(MOD_RGUI, KC_ENTER)
@@ -85,9 +84,10 @@ enum custom_keycodes {
 #define MEH_X           MT(MOD_MEH,  KC_X)
 #define TOG_LAYER_CLR   TOGGLE_LAYER_COLOR
 #define RGB_MODE_FWRD   RGB_MODE_FORWARD
+#define MEDIA_NEXT      KC_MEDIA_NEXT_TRACK
 
-#define MY_AA NO_ARNG
-#define MY_OE NO_OSTR
+#define MY_AA           NO_ARNG
+#define MY_OE           NO_OSTR
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Mac Layers
@@ -107,8 +107,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_MAC_MISC] = LAYOUT_voyager(
     RGB_TOG,       TOG_LAYER_CLR, RGB_MODE_FWRD, RGB_SLD,       RGB_VAD,       RGB_VAI,                  _______,       _______,       _______,       _______,       _______,       QK_BOOT,
-    _______,       _______,       KC_VOLD,       KC_VOLU,       KC_MUTE,       _______,                  KC_PAGE_UP,    KC_HOME,       KC_UP,         KC_END,        _______,       _______,
-    _______,       LCTL_PREV,     LALT_NEXT,     LSFT_STOP,     LCTL_PLAY,     _______,                  KC_PGDN,       KC_LEFT,       KC_DOWN,       KC_RIGHT,      _______,       _______,
+    _______,       _______,       KC_MUTE,       KC_VOLD,       KC_VOLU,       _______,                  KC_PAGE_UP,    KC_HOME,       KC_UP,         KC_END,        _______,       _______,
+    _______,       KC_LCTL,       LALT_STOP,     LSFT_PREV,     LCTL_PLAY,     MEDIA_NEXT,               KC_PGDN,       KC_LEFT,       KC_DOWN,       KC_RIGHT,      _______,       _______,
     _______,       _______,       _______,       HSV_0_255_255, HSV_74_255_255,HSV_169_255_255,          _______,       _______,       _______,       _______,       _______,       _______,
                                                                 LGUI_MAC_BASE, _______,                  TO(_MAC_SYMBS), _______
   ),
@@ -129,8 +129,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_LNX_MISC] = LAYOUT_voyager(
     RGB_TOG,       TOG_LAYER_CLR, RGB_MODE_FWRD, RGB_SLD,       RGB_VAD,       RGB_VAI,                  _______,       _______,       _______,       _______,       _______,       QK_BOOT,
-    _______,       _______,       KC_VOLD,       KC_VOLU,       KC_MUTE,       _______,                  KC_PAGE_UP,    KC_HOME,       KC_UP,         KC_END,        _______,       _______,
-    _______,       LCTL_PREV,     LALT_NEXT,     LSFT_STOP,     LCTL_PLAY,     _______,                  KC_PGDN,       KC_LEFT,       KC_DOWN,       KC_RIGHT,      _______,       _______,
+    _______,       _______,       KC_MUTE,       KC_VOLD,       KC_VOLU,       _______,                  KC_PAGE_UP,    KC_HOME,       KC_UP,         KC_END,        _______,       _______,
+    _______,       KC_LCTL,       LALT_STOP,     LSFT_PREV,     LCTL_PLAY,     MEDIA_NEXT,               KC_PGDN,       KC_LEFT,       KC_DOWN,       KC_RIGHT,      _______,       _______,
     _______,       _______,       _______,       HSV_0_255_255, HSV_74_255_255,HSV_169_255_255,          _______,       _______,       _______,       _______,       _______,       _______,
                                                                 LGUI_LNX_BASE, _______,                  TO(_LNX_SYMBS), _______
   ),
