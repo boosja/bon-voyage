@@ -37,16 +37,16 @@ enum custom_keycodes {
   NO_BTCK_LIVE,
   NO_CIRC_LIVE,
   NO_TILD_LIVE,
-  NO_BTCK_LV_MAC,
-  NO_CIRC_LV_MAC,
   NO_TILD_LV_MAC,
 };
 
 // Mac specific keycodes
 #define NO_AT_MAC       KC_NUHS
 #define NO_BSLS_MAC     S(ALGR(KC_7))
-#define NO_BTCK_MAC     ALGR(KC_EQL)
+#define NO_BTCK_MAC     S(KC_EQL)
+#define NO_BTCK_LV_MAC  A(KC_EQL)
 #define NO_CIRC_MAC     S(KC_RBRC)
+#define NO_CIRC_LV_MAC  S(A(KC_RBRC))
 #define NO_DLR_MAC      S(KC_4)
 #define NO_LCBR_MAC     S(ALGR(KC_8))
 #define NO_PIPE_MAC     KC_NUBS
@@ -305,12 +305,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     case NO_TILD_LIVE:
       tap_and_revive_key(record, NO_TILD);
-      return false;
-    case NO_BTCK_LV_MAC:
-      tap_and_revive_key(record, NO_BTCK_MAC);
-      return false;
-    case NO_CIRC_LV_MAC:
-      tap_and_revive_key(record, NO_CIRC_MAC);
       return false;
     case NO_TILD_LV_MAC:
       tap_and_revive_key(record, NO_TILD_MAC);
