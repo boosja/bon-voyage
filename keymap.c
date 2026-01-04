@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,        KC_Q,          KC_W,          KC_E,          KC_R,          KC_T,                     KC_Y,          KC_U,          KC_I,          KC_O,          KC_P,          NO_SLSH,
     KC_BSPC,       LCTL_A,        LALT_S,        LSFT_D,        LCTL_F,        KC_G,                     KC_H,          RCTL_J,        RSFT_K,        RALT_L,        RGUI_COLN,     NO_AT_MAC,
     KC_ESCAPE,     HYPR_Z,        MEH_X,         KC_C,          KC_V,          KC_B,                     KC_N,          KC_M,          NO_COMM,       NO_DOT,        NO_MINS,       QK_CAPS_WORD_TOGGLE,
-                                                                LSUPER_SPACE,  TT(_MAC_MISC),            OSL(_MAC_SYMBS), RSUPER_ENTER
+                                                                LSUPER_SPACE,  MO(_MAC_MISC),            OSL(_MAC_SYMBS), RSUPER_ENTER
   ),
   [_MAC_SYMBS] = LAYOUT_voyager(
     _______,       KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5,                    KC_F6,         KC_F7,         KC_F8,         KC_F9,         KC_F10,        KC_F11,
@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,        KC_Q,          KC_W,          KC_E,          KC_R,          KC_T,                     KC_Y,          KC_U,          KC_I,          KC_O,          KC_P,          NO_SLSH,
     KC_BSPC,       LCTL_A,        LALT_S,        LSFT_D,        LCTL_F,        KC_G,                     KC_H,          RCTL_J,        RSFT_K,        RALT_L,        RGUI_COLN,     NO_AT,
     KC_ESCAPE,     HYPR_Z,        MEH_X,         KC_C,          KC_V,          KC_B,                     KC_N,          KC_M,          KC_COMM,       KC_DOT,        NO_MINS,       QK_CAPS_WORD_TOGGLE,
-                                                                LSUPER_SPACE,  TT(_LNX_MISC),            OSL(_LNX_SYMBS), RSUPER_ENTER
+                                                                LSUPER_SPACE,  MO(_LNX_MISC),            OSL(_LNX_SYMBS), RSUPER_ENTER
   ),
   [_LNX_SYMBS] = LAYOUT_voyager(
     _______,       KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5,                    KC_F6,         KC_F7,         KC_F8,         KC_F9,         KC_F10,        KC_F11,
