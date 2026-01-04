@@ -35,6 +35,8 @@ enum custom_keycodes {
   HSV_74_255_255,
   HSV_169_255_255,
   NO_BTCK_LIVE,
+  NO_CIRC_LIVE,
+  NO_TILD_LIVE,
 };
 
 // Mac specific keycodes
@@ -124,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,       KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5,                    KC_F6,         KC_F7,         KC_F8,         KC_F9,         KC_F10,        KC_F11,
     _______,       NO_EXLM,       NO_DLR,        _______,       NO_BTCK_LIVE,  MY_AA,                    NO_AE,         NO_PLUS,       NO_MINS,       NO_EQL,        _______,       KC_F12,
     _______,       KC_LCTL,       KC_LALT,       KC_LSFT,       LCTL_HASH,     MY_OE,                    NO_QUES,       RCTL_QUOT,     RSFT_DQUO,     RALT_SLSH,     RGUI_ASTR,     _______,
-    _______,       _______,       NO_CIRC,       NO_TILD,       NO_PERC,       _______,                  NO_AMPR,       NO_LABK,       NO_RABK,       NO_BSLS,       _______,       _______,
+    _______,       _______,       NO_CIRC_LIVE,  NO_TILD_LIVE,  NO_PERC,       _______,                  NO_AMPR,       NO_LABK,       NO_RABK,       NO_BSLS,       _______,       _______,
                                                                 TO(_LNX_BASE), _______,                  TO(_LNX_MISC), _______
   ),
   [_LNX_MISC] = LAYOUT_voyager(
@@ -287,7 +289,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     case NO_BTCK_LIVE:
       if (record->event.pressed) {
-        tap_code16(S(KC_EQL));
+        tap_code16(NO_GRV);
+        tap_code(KC_SPC);
+      }
+      return false;
+    case NO_CIRC_LIVE:
+      if (record->event.pressed) {
+        tap_code16(NO_CIRC);
+        tap_code(KC_SPC);
+      }
+      return false;
+    case NO_TILD_LIVE:
+      if (record->event.pressed) {
+        tap_code16(NO_TILD);
         tap_code(KC_SPC);
       }
       return false;
