@@ -37,6 +37,9 @@ enum custom_keycodes {
   NO_BTCK_LIVE,
   NO_CIRC_LIVE,
   NO_TILD_LIVE,
+  NO_BTCK_LV_MAC,
+  NO_CIRC_LV_MAC,
+  NO_TILD_LV_MAC,
 };
 
 // Mac specific keycodes
@@ -101,10 +104,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                 LSUPER_SPACE,  MO(_MAC_MISC),            OSL(_MAC_SYMBS), RSUPER_ENTER
   ),
   [_MAC_SYMBS] = LAYOUT_voyager(
-    _______,       KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5,                    KC_F6,         KC_F7,         KC_F8,         KC_F9,         KC_F10,        KC_F11,
-    KC_GRAVE,      NO_EXLM,       _______,       NO_LBRC,       NO_RBRC,       NO_PIPE_MAC,              NO_AE,         NO_PLUS,       NO_MINS,       NO_EQL,        MY_AA,         KC_F12,
-    _______,       LCTL_HASH,     LALT_DLR_MAC,  LSFT_LPRN,     LCTL_RPRN,     NO_BTCK_MAC,              NO_QUES,       RCTL_QUOT_MAC, RSFT_DQUO,     RALT_SLSH,     RGUI_ASTR,     _______,
-    _______,       NO_PERC,       NO_CIRC_MAC,   NO_LCBR_MAC,   NO_RCBR_MAC,   NO_TILD_MAC,              NO_AMPR,       NO_LABK,       NO_RABK,       NO_BSLS_MAC,   MY_OE,         _______,
+    NO_BTCK_MAC,   KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5,                    KC_F6,         KC_F7,         KC_F8,         KC_F9,         KC_F10,        KC_F11,
+    NO_CIRC_MAC,   NO_EXLM,       NO_DLR_MAC,    _______,       NO_BTCK_LV_MAC,MY_AA,                    NO_AE,         NO_PLUS,       NO_MINS,       NO_EQL,        _______,       KC_F12,
+    _______,       KC_LCTL,       KC_LALT,       KC_LSFT,       LCTL_HASH,     MY_OE,                    NO_QUES,       RCTL_QUOT_MAC, RSFT_DQUO,     RALT_SLSH,     RGUI_ASTR,     _______,
+    NO_TILD_MAC,   _______,       NO_CIRC_LV_MAC,NO_TILD_LV_MAC,NO_PERC,       _______,                  NO_AMPR,       NO_LABK,       NO_RABK,       NO_BSLS_MAC,   _______,       _______,
                                                                 TO(_MAC_BASE), _______,                  TO(_MAC_MISC), _______
   ),
   [_MAC_MISC] = LAYOUT_voyager(
@@ -193,6 +196,13 @@ void handle_dual_layer_func(keyrecord_t *record, uint16_t kc_held, uint16_t laye
     } else {
       unregister_code16(kc_held);
     }
+  }
+}
+
+void tap_and_revive_key(keyrecord_t *record, uint16_t kc) {
+  if (record->event.pressed) {
+    tap_code16(kc);
+    tap_code(KC_SPC);
   }
 }
 
@@ -288,22 +298,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     case NO_BTCK_LIVE:
-      if (record->event.pressed) {
-        tap_code16(NO_GRV);
-        tap_code(KC_SPC);
-      }
+      tap_and_revive_key(record, NO_GRV);
       return false;
     case NO_CIRC_LIVE:
-      if (record->event.pressed) {
-        tap_code16(NO_CIRC);
-        tap_code(KC_SPC);
-      }
+      tap_and_revive_key(record, NO_CIRC);
       return false;
     case NO_TILD_LIVE:
-      if (record->event.pressed) {
-        tap_code16(NO_TILD);
-        tap_code(KC_SPC);
-      }
+      tap_and_revive_key(record, NO_TILD);
+      return false;
+    case NO_BTCK_LV_MAC:
+      tap_and_revive_key(record, NO_BTCK_MAC);
+      return false;
+    case NO_CIRC_LV_MAC:
+      tap_and_revive_key(record, NO_CIRC_MAC);
+      return false;
+    case NO_TILD_LV_MAC:
+      tap_and_revive_key(record, NO_TILD_MAC);
       return false;
   }
   return true;
