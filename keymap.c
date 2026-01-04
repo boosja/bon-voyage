@@ -122,9 +122,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_LNX_SYMBS] = LAYOUT_voyager(
     _______,       KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5,                    KC_F6,         KC_F7,         KC_F8,         KC_F9,         KC_F10,        KC_F11,
-    _______,       NO_EXLM,       _______,       NO_LBRC,       NO_RBRC,       NO_PIPE,                  NO_AE,         NO_PLUS,       NO_MINS,       NO_EQL,        MY_AA,         KC_F12,
-    _______,       LCTL_HASH,     LALT_DLR,      LSFT_LPRN,     LCTL_RPRN,     NO_BTCK_LIVE,             NO_QUES,       RCTL_QUOT,     RSFT_DQUO,     RALT_SLSH,     RGUI_ASTR,     _______,
-    _______,       NO_PERC,       NO_CIRC,       NO_LCBR,       NO_RCBR,       NO_TILD,                  NO_AMPR,       NO_LABK,       NO_RABK,       NO_BSLS,       MY_OE,         _______,
+    _______,       NO_EXLM,       NO_DLR,        _______,       NO_BTCK_LIVE,  MY_AA,                    NO_AE,         NO_PLUS,       NO_MINS,       NO_EQL,        _______,       KC_F12,
+    _______,       KC_LCTL,       KC_LALT,       KC_LSFT,       LCTL_HASH,     MY_OE,                    NO_QUES,       RCTL_QUOT,     RSFT_DQUO,     RALT_SLSH,     RGUI_ASTR,     _______,
+    _______,       _______,       NO_CIRC,       NO_TILD,       NO_PERC,       _______,                  NO_AMPR,       NO_LABK,       NO_RABK,       NO_BSLS,       _______,       _______,
                                                                 TO(_LNX_BASE), _______,                  TO(_LNX_MISC), _______
   ),
   [_LNX_MISC] = LAYOUT_voyager(
