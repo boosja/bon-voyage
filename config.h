@@ -1,5 +1,5 @@
 #undef TAPPING_TERM
-#define TAPPING_TERM 175
+#define TAPPING_TERM 250
 // Better rolling keys
 #define HOLD_ON_OTHER_KEY_PRESS
 
