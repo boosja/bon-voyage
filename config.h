@@ -1,5 +1,5 @@
 #undef TAPPING_TERM
-#define TAPPING_TERM 250
+#define TAPPING_TERM 175
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define SERIAL_NUMBER "qGNl4/bvlGjj"
