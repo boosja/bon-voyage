@@ -1,7 +1,7 @@
 #undef TAPPING_TERM
 #define TAPPING_TERM 250
 // Better rolling keys
-#define HOLD_ON_OTHER_KEY_PRESS
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define SERIAL_NUMBER "qGNl4/bvlGjj"

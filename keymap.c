@@ -347,6 +347,18 @@ bool caps_word_press_user(uint16_t keycode) {
     }
 }
 
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LSFT_D:
+        case LSUPER_SPACE:
+            // Immediately select the hold action when another key is pressed.
+            return true;
+        default:
+            // Do not select the hold action when another key is pressed.
+            return false;
+    }
+}
+
 // !!! LIGHTS !!!
 extern rgb_config_t rgb_matrix_config;
 
