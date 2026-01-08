@@ -102,7 +102,7 @@ enum {
 };
 
 tap_dance_action_t tap_dance_actions[] = {
-  [TD_W_AA] = ACTION_TAP_DANCE_DOUBLE(KC_T, MY_AA),
+  [TD_W_AA] = ACTION_TAP_DANCE_DOUBLE(KC_W, MY_AA),
   [TD_O_OE] = ACTION_TAP_DANCE_DOUBLE(KC_O, MY_OE),
   [TD_Y_AE] = ACTION_TAP_DANCE_DOUBLE(KC_Y, NO_AE),
 };
