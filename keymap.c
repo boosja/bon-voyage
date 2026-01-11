@@ -97,13 +97,13 @@ enum custom_keycodes {
 // Tap dance
 enum {
   TD_W_AA,
-  TD_O_OE,
+  TD_I_OE,
   TD_Y_AE,
 };
 
 tap_dance_action_t tap_dance_actions[] = {
   [TD_W_AA] = ACTION_TAP_DANCE_DOUBLE(KC_W, MY_AA),
-  [TD_O_OE] = ACTION_TAP_DANCE_DOUBLE(KC_O, MY_OE),
+  [TD_I_OE] = ACTION_TAP_DANCE_DOUBLE(KC_I, MY_OE),
   [TD_Y_AE] = ACTION_TAP_DANCE_DOUBLE(KC_Y, NO_AE),
 };
 
@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Mac Layers
   [_MAC_BASE] = LAYOUT_voyager(
     NO_QUOT_MAC,   KC_1,          KC_2,          KC_3,          KC_4,          KC_5,                     KC_6,          KC_7,          KC_8,          KC_9,          KC_0,          NO_BSLS_MAC,
-    KC_TAB,        KC_Q,          TD(TD_W_AA),   KC_E,          KC_R,          KC_T,                     TD(TD_Y_AE),   KC_U,          KC_I,          TD(TD_O_OE),   KC_P,          NO_SLSH,
+    KC_TAB,        KC_Q,          TD(TD_W_AA),   KC_E,          KC_R,          KC_T,                     TD(TD_Y_AE),   KC_U,          TD(TD_I_OE),   KC_O,          KC_P,          NO_SLSH,
     KC_BSPC,       LCTL_A,        LALT_S,        LSFT_D,        LCTL_F,        KC_G,                     KC_H,          RCTL_J,        RSFT_K,        RALT_L,        RGUI_COLN,     NO_AT_MAC,
     KC_ESCAPE,     HYPR_Z,        MEH_X,         KC_C,          KC_V,          KC_B,                     KC_N,          KC_M,          NO_COMM,       NO_DOT,        NO_MINS,       QK_CAPS_WORD_TOGGLE,
                                                                 LSUPER_SPACE,  MO(_MAC_MISC),            OSL(_MAC_SYMBS), RSUPER_ENTER
@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Linux layers
   [_LNX_BASE] = LAYOUT_voyager(
     KC_LGUI,       KC_1,          KC_2,          KC_3,          KC_4,          KC_5,                     KC_6,          KC_7,          KC_8,          KC_9,          KC_0,          NO_BSLS,
-    KC_TAB,        KC_Q,          TD(TD_W_AA),   KC_E,          KC_R,          KC_T,                     TD(TD_Y_AE),   KC_U,          KC_I,          TD(TD_O_OE),   KC_P,          NO_SLSH,
+    KC_TAB,        KC_Q,          TD(TD_W_AA),   KC_E,          KC_R,          KC_T,                     TD(TD_Y_AE),   KC_U,          TD(TD_I_OE),   KC_O,          KC_P,          NO_SLSH,
     KC_BSPC,       LCTL_A,        LALT_S,        LSFT_D,        LCTL_F,        KC_G,                     KC_H,          RCTL_J,        RSFT_K,        RALT_L,        RGUI_COLN,     NO_AT,
     KC_ESCAPE,     HYPR_Z,        MEH_X,         KC_C,          KC_V,          KC_B,                     KC_N,          KC_M,          KC_COMM,       KC_DOT,        NO_MINS,       QK_CAPS_WORD_TOGGLE,
                                                                 LSUPER_SPACE,  MO(_LNX_MISC),            OSL(_LNX_SYMBS), RSUPER_ENTER
