@@ -118,9 +118,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_MAC_SYMBS] = LAYOUT_voyager(
     NO_BTCK_MAC,   KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5,                    KC_F6,         KC_F7,         KC_F8,         KC_F9,         KC_F10,        KC_F11,
-    NO_CIRC_MAC,   NO_EXLM,       NO_DLR_MAC,    _______,       NO_BTCK_LV_MAC,MY_AA,                    NO_AE,         NO_LABK,       NO_RABK,       NO_EQL,        _______,       KC_F12,
+    NO_CIRC_MAC,   NO_EXLM,       NO_DLR_MAC,    _______,       NO_BTCK_LV_MAC,MY_AA,                    NO_AE,         NO_MINS,       NO_RABK,       NO_EQL,        _______,       KC_F12,
     _______,       KC_LCTL,       KC_LALT,       KC_LSFT,       LCTL_HASH,     MY_OE,                    NO_QUES,       RCTL_QUOT_MAC, RSFT_DQUO,     RALT_SLSH,     RGUI_ASTR,     _______,
-    NO_TILD_MAC,   _______,       NO_CIRC_LV_MAC,NO_TILD_LV_MAC,NO_PERC,       _______,                  NO_AMPR,       NO_PLUS,       NO_MINS,       NO_BSLS_MAC,   _______,       _______,
+    NO_TILD_MAC,   _______,       NO_CIRC_LV_MAC,NO_TILD_LV_MAC,NO_PERC,       _______,                  NO_AMPR,       NO_PLUS,       NO_LABK,       NO_BSLS_MAC,   _______,       _______,
                                                                 TO(_MAC_BASE), _______,                  TO(_MAC_MISC), _______
   ),
   [_MAC_MISC] = LAYOUT_voyager(
@@ -140,9 +140,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_LNX_SYMBS] = LAYOUT_voyager(
     NO_GRV,        KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5,                    KC_F6,         KC_F7,         KC_F8,         KC_F9,         KC_F10,        KC_F11,
-    NO_CIRC,       NO_EXLM,       NO_DLR,        _______,       NO_BTCK_LIVE,  MY_AA,                    NO_AE,         NO_LABK,       NO_RABK,       NO_EQL,        _______,       KC_F12,
+    NO_CIRC,       NO_EXLM,       NO_DLR,        _______,       NO_BTCK_LIVE,  MY_AA,                    NO_AE,         NO_MINS,       NO_RABK,       NO_EQL,        _______,       KC_F12,
     _______,       KC_LCTL,       KC_LALT,       KC_LSFT,       LCTL_HASH,     MY_OE,                    NO_QUES,       RCTL_QUOT,     RSFT_DQUO,     RALT_SLSH,     RGUI_ASTR,     _______,
-    NO_TILD,       _______,       NO_CIRC_LIVE,  NO_TILD_LIVE,  NO_PERC,       _______,                  NO_AMPR,       NO_PLUS,       NO_MINS,       NO_BSLS,       _______,       _______,
+    NO_TILD,       _______,       NO_CIRC_LIVE,  NO_TILD_LIVE,  NO_PERC,       _______,                  NO_AMPR,       NO_PLUS,       NO_LABK,       NO_BSLS,       _______,       _______,
                                                                 TO(_LNX_BASE), _______,                  TO(_LNX_MISC), _______
   ),
   [_LNX_MISC] = LAYOUT_voyager(
