@@ -255,7 +255,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return true;
     case RGUI_COLN:
-      handle_dual_func(record, KC_RIGHT_GUI, NO_COLN);
+      if (record->tap.count > 0) {
+        if (record->event.pressed) {
+          tap_code16(NO_COLN);
+        }
+      } else {
+        if (record->event.pressed) {
+          register_code16(KC_RIGHT_GUI);
+        } else {
+          unregister_code16(KC_RIGHT_GUI);
+        }
+      }
       return false;
     case LCTL_HASH:
       handle_dual_func(record, KC_LEFT_CTRL, NO_HASH);
