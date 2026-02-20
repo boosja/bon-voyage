@@ -50,7 +50,7 @@ enum custom_keycodes {
 #define NO_DLR_MAC      S(KC_4)
 #define NO_LBRC_MAC     ALGR(KC_8)
 #define NO_LCBR_MAC     S(ALGR(KC_8))
-#define NO_PIPE_MAC     KC_NUBS
+#define NO_PIPE_MAC     ALGR(KC_7)
 #define NO_QUOT_MAC     KC_GRV
 #define NO_RBRC_MAC     ALGR(KC_9)
 #define NO_RCBR_MAC     S(ALGR(KC_9))
