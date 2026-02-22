@@ -1,5 +1,7 @@
 #undef TAPPING_TERM
 #define TAPPING_TERM 250
+// Do not repeat keys on double tap and hold
+#define QUICK_TAP_TERM 0
 // Better rolling keys
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 // Rolling keys on same hand is registered as taps:
