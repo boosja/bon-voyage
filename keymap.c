@@ -112,7 +112,7 @@ tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Mac Layers
   [_MAC_BASE] = LAYOUT_voyager(
-    NO_BTCK_LV_MAC,KC_1,          NO_RBRC_MAC,   NO_LBRC_MAC,   NO_HASH,       NO_LCBR_MAC,              NO_RCBR_MAC,   NO_PIPE_MAC,   NO_LPRN,       NO_RPRN,       KC_0,          NO_BSLS_MAC,
+    NO_BTCK_LV_MAC,KC_1,          KC_2,          KC_3,          KC_4,          KC_5,                     KC_6,          KC_7,          KC_8,          KC_9,          KC_0,          NO_BSLS_MAC,
     KC_TAB,        KC_Q,          TD(TD_W_AA),   KC_E,          KC_R,          KC_T,                     TD(TD_Y_AE),   KC_U,          TD(TD_I_OE),   KC_O,          KC_P,          NO_SLSH,
     KC_BSPC,       LCTL_A,        LALT_S,        LSFT_D,        LCTL_F,        KC_G,                     KC_H,          RCTL_J,        RSFT_K,        RALT_L,        RGUI_COLN,     NO_AT_MAC,
     KC_ESCAPE,     HYPR_Z,        MEH_X,         KC_C,          KC_V,          KC_B,                     KC_N,          KC_M,          NO_COMM,       NO_DOT,        NO_MINS,       QK_CAPS_WORD_TOGGLE,
