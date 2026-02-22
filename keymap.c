@@ -119,17 +119,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                 LSUPER_SPACE,  MO(_MAC_MISC),            OSL(_MAC_SYMBS), RSUPER_ENTER
   ),
   [_MAC_SYMBS] = LAYOUT_voyager(
-    NO_BTCK_MAC,   KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5,                    KC_F6,         KC_F7,         KC_F8,         KC_F9,         KC_F10,        KC_F11,
-    NO_CIRC_MAC,   NO_EXLM,       NO_DLR_MAC,    _______,       NO_BTCK_LV_MAC,MY_AA,                    NO_AE,         NO_MINS,       NO_RABK,       NO_EQL,        _______,       KC_F12,
+    NO_BTCK_MAC,   _______,       NO_RBRC_MAC,   NO_LBRC_MAC,   NO_HASH,       NO_LCBR_MAC,              NO_RCBR_MAC,   NO_PIPE_MAC,   NO_LPRN,       NO_RPRN,       _______,       _______,
+    NO_CIRC_MAC,   NO_EXLM,       NO_DLR_MAC,    _______,       NO_BTCK_LV_MAC,MY_AA,                    NO_AE,         NO_MINS,       NO_RABK,       NO_EQL,        _______,       _______,
     _______,       KC_LCTL,       KC_LALT,       KC_LSFT,       LCTL_HASH,     MY_OE,                    NO_QUES,       RCTL_QUOT_MAC, RSFT_DQUO,     RALT_SLSH,     RGUI_ASTR,     _______,
     NO_TILD_MAC,   _______,       NO_CIRC_LV_MAC,NO_TILD_LV_MAC,NO_PERC,       _______,                  NO_AMPR,       NO_PLUS,       NO_LABK,       NO_BSLS_MAC,   _______,       _______,
                                                                 TO(_MAC_BASE), _______,                  TO(_MAC_MISC), _______
   ),
   [_MAC_MISC] = LAYOUT_voyager(
-    _______,       KC_1,          KC_2,          KC_3,          KC_4,          KC_5,                     KC_6,          KC_7,          KC_8,          KC_9,          KC_0,          QK_BOOT,
-    _______,       _______,       KC_MUTE,       KC_VOLD,       KC_VOLU,       _______,                  KC_PAGE_UP,    KC_HOME,       KC_UP,         KC_END,        _______,       _______,
+    _______,       KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_F5,                    KC_F6,         KC_F7,         KC_F8,         KC_F9,         KC_F10,        KC_F11,
+    _______,       _______,       KC_MUTE,       KC_VOLD,       KC_VOLU,       _______,                  KC_PAGE_UP,    KC_HOME,       KC_UP,         KC_END,        _______,       KC_F12,
     _______,       KC_LCTL,       LALT_STOP,     LSFT_PREV,     LCTL_PLAY,     MEDIA_NEXT,               KC_PGDN,       KC_LEFT,       KC_DOWN,       KC_RIGHT,      _______,       _______,
-    _______,       _______,       _______,       HSV_0_255_255, HSV_74_255_255,HSV_169_255_255,          _______,       _______,       _______,       _______,       _______,       _______,
+    _______,       _______,       _______,       HSV_0_255_255, HSV_74_255_255,HSV_169_255_255,          _______,       _______,       _______,       _______,       _______,       QK_BOOT,
                                                                 LGUI_MAC_BASE, _______,                  TO(_MAC_SYMBS), _______
   ),
   // Linux layers
