@@ -361,6 +361,7 @@ bool caps_word_press_user(uint16_t keycode) {
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case LCTL_A:
         case LSUPER_SPACE:
             // Immediately select the hold action when another key is pressed.
             return true;
